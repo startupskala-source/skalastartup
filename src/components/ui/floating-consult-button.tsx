@@ -159,7 +159,7 @@ export const FloatingConsultButton = ({
               />
               
               {/* Online Indicator */}
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+              <div className="absolute -top-0.5 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-background animate-pulse z-10" />
             </div>
           </div>
         </div>
