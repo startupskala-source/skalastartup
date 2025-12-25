@@ -38,10 +38,10 @@ export const FloatingConsultButton = ({
 }: FloatingConsultButtonProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   
-  const lgButtonSize = buttonSize || 140;
-  const smButtonSize = buttonSize ? buttonSize * 0.8 : 112;
-  const lgImageSize = imageSize || 80;
-  const smImageSize = imageSize ? imageSize * 0.833 : 64;
+  const lgButtonSize = buttonSize || 100;
+  const smButtonSize = buttonSize ? buttonSize * 0.7 : 80;
+  const lgImageSize = imageSize || 56;
+  const smImageSize = imageSize ? imageSize * 0.7 : 48;
 
   return (
     <>
@@ -107,8 +107,8 @@ export const FloatingConsultButton = ({
       <div
         className="fixed z-50"
         style={{
-          bottom: position.bottom,
-          right: position.right,
+          bottom: position.bottom || "1rem",
+          right: position.right || "1rem",
           left: position.left,
           top: position.top,
         }}
@@ -159,7 +159,7 @@ export const FloatingConsultButton = ({
               />
               
               {/* Online Indicator */}
-              <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse" />
             </div>
           </div>
         </div>
