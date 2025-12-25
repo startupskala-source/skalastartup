@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { AnimatedBorderButton } from "@/components/ui/animated-border-button";
 
 interface FloatingConsultButtonProps {
   buttonSize?: number;
@@ -95,9 +95,9 @@ export const FloatingConsultButton = ({
               </p>
 
               {/* CTA Button */}
-              <Button onClick={ctaButtonAction} className="w-full" variant="hero">
+              <AnimatedBorderButton onClick={ctaButtonAction} className="w-full">
                 {ctaButtonText}
-              </Button>
+              </AnimatedBorderButton>
             </div>
           </motion.div>
         )}
