@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { AnimatedBorderButton } from "@/components/ui/animated-border-button";
 import { AnimatedText, AnimatedLetters } from "@/components/AnimatedText";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Header } from "@/components/Header";
@@ -86,12 +87,12 @@ const Index = () => {
               ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
-            <Button variant="hero" size="xl" asChild>
+            <AnimatedBorderButton size="xl" asChild>
               <a href="#contato">
                 Começar agora
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
-            </Button>
+            </AnimatedBorderButton>
             <Button variant="minimal" size="xl" asChild>
               <a href="#servicos">Ver serviços</a>
             </Button>
