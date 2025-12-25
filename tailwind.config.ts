@@ -110,6 +110,12 @@ export default {
           "0%": { opacity: "0", transform: "translateY(100%)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "move-dot": {
+          "0%, 100%": { top: "10%", right: "10%" },
+          "25%": { top: "10%", right: "calc(100% - 35px)" },
+          "50%": { top: "calc(100% - 30px)", right: "calc(100% - 35px)" },
+          "75%": { top: "calc(100% - 30px)", right: "10%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -119,6 +125,7 @@ export default {
         "line-expand": "line-expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
         "float": "float 6s ease-in-out infinite",
         "slide-up": "slide-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "move-dot": "move-dot 4s linear infinite",
       },
     },
   },
