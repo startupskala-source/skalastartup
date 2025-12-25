@@ -97,15 +97,6 @@ const Index = () => {
               Começar agora
               <ArrowRight className="ml-2 h-4 w-4" />
             </MovingBorderButton>
-            <MovingBorderButton
-              as="a"
-              href="#servicos"
-              borderRadius="0.5rem"
-              className="px-10 py-4 font-display font-medium tracking-wide"
-              duration={3000}
-            >
-              Ver serviços
-            </MovingBorderButton>
           </div>
 
           {/* Bottom decorative line */}
