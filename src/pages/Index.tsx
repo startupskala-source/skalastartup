@@ -8,7 +8,6 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Stats } from "@/components/Stats";
 import { FAQ } from "@/components/FAQ";
 import { MultiStepForm } from "@/components/ui/multistep-form";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
 import { ArrowRight } from "lucide-react";
@@ -163,7 +162,6 @@ const Index = () => {
       <RatingSection />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 };
