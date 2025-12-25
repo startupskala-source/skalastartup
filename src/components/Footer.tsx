@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import skalaLogo from "@/assets/skala-logo.svg";
 
 export const Footer = () => {
@@ -7,9 +8,17 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <img src={skalaLogo} alt="SKALA" className="h-10 w-auto" />
           
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} SKALA. Todos os direitos reservados.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <Link 
+              to="/privacidade" 
+              className="text-muted-foreground text-sm hover:text-foreground transition-colors"
+            >
+              Política de Privacidade
+            </Link>
+            <p className="text-muted-foreground text-sm">
+              © {new Date().getFullYear()} SKALA. Todos os direitos reservados.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
