@@ -37,6 +37,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         line: "hsl(var(--line-color))",
+        "dot-glow": "hsl(var(--dot-glow))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
