@@ -171,14 +171,17 @@ const Index = () => {
 
       <Footer />
       <FloatingConsultButton
+        buttonSize={100}
+        imageSize={60}
         imageSrc={consultantAvatar}
         imageAlt="Consultor SKALA"
-        revolvingText="FALE CONOSCO - CONSULTORIA GRÁTIS - "
+        revolvingText="FALE CONOSCO - CONSULTORIA - "
         popupHeading="Consultoria Gratuita"
         popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar."
         popupBadgeText="Grátis"
         ctaButtonText="Agendar conversa"
         ctaButtonAction={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+        position={{ bottom: "1.5rem", right: "1.5rem" }}
       />
     </main>
   );
