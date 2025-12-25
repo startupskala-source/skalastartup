@@ -9,6 +9,7 @@ import { Stats } from "@/components/Stats";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Portfolio } from "@/components/Portfolio";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -130,6 +131,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Portfolio Section */}
+      <Portfolio />
 
       {/* How It Works Section */}
       <HowItWorks />
