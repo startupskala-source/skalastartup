@@ -11,6 +11,7 @@ import { MultiStepForm } from "@/components/ui/multistep-form";
 import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
+import { AreaChart } from "@/components/AreaChart";
 import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
 
@@ -163,6 +164,27 @@ const Index = () => {
           </div>
 
           <MultiStepForm />
+        </div>
+      </section>
+
+      {/* Chart Section */}
+      <section className="py-24 md:py-32 px-6 md:px-12">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-12">
+            <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-4">
+              Resultados
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight">
+              Crescimento dos nossos<br />
+              <span className="text-muted-foreground">clientes</span>
+            </h2>
+          </div>
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <AreaChart 
+              title="Crescimento"
+              height={400}
+            />
+          </div>
         </div>
       </section>
 
