@@ -1,52 +1,9 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const projects = [
-  {
-    id: 1,
-    category: "Cardápio Digital",
-    title: "Restaurante Sabor & Arte",
-    description: "Cardápio interativo com QR Code e pedidos online integrados.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    category: "Website",
-    title: "Studio Bella Hair",
-    description: "Site institucional com agendamento online integrado.",
-    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    category: "Automação",
-    title: "Clínica Vida Saudável",
-    description: "Chatbot para agendamento e lembretes automáticos.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    category: "E-commerce",
-    title: "Loja Natural Fit",
-    description: "Loja virtual completa com gestão de estoque.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    category: "Cardápio Digital",
-    title: "Pizzaria Don Mario",
-    description: "Menu digital com personalização de pedidos em tempo real.",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    category: "Automação",
-    title: "Auto Center Premium",
-    description: "Sistema de atendimento automatizado via WhatsApp.",
-    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&h=400&fit=crop",
-  },
-];
+import { projects } from "@/data/projects";
 
 export const Portfolio = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -126,10 +83,11 @@ const ProjectCard = ({
   project: (typeof projects)[0];
   index: number;
 }) => {
-  const { ref, isVisible } = useScrollAnimation(0.1);
+  const { ref, isVisible } = useScrollAnimation<HTMLAnchorElement>(0.1);
 
   return (
-    <div
+    <Link
+      to={`/projeto/${project.id}`}
       ref={ref}
       className={`group relative flex-shrink-0 w-[320px] md:w-[400px] snap-start transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -144,8 +102,10 @@ const ProjectCard = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <ExternalLink className="h-5 w-5 text-background mb-2" />
-          <p className="text-background/80 text-sm">Ver projeto</p>
+          <div className="flex items-center gap-2 text-background">
+            <span className="text-sm font-medium">Ver projeto</span>
+            <ArrowRight className="h-4 w-4" />
+          </div>
         </div>
       </div>
 
@@ -156,6 +116,6 @@ const ProjectCard = ({
         <h3 className="font-display text-lg font-bold mt-1">{project.title}</h3>
         <p className="text-muted-foreground text-sm mt-1">{project.description}</p>
       </div>
-    </div>
+    </Link>
   );
 };
