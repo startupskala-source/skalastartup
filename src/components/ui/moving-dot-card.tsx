@@ -34,7 +34,7 @@ export default function DotCard({
 
   return (
     <div className="relative w-full min-w-[150px] max-w-[180px] p-[2px] rounded-xl overflow-hidden group">
-      <div className="absolute w-5 h-5 bg-primary rounded-full blur-sm animate-move-dot" />
+      <div className="absolute w-5 h-5 bg-dot-glow rounded-full blur-sm animate-move-dot" />
 
       <div className="relative flex flex-col items-center justify-center gap-2 bg-background rounded-xl px-6 py-8 z-10 border border-border/50">
         <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
