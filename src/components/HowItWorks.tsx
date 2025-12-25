@@ -1,6 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MessageSquare, Search, Code, Rocket } from "lucide-react";
-import EstimatedDateBadge from "@/components/ui/estimated-arrival";
 
 const steps = [
   {
@@ -54,11 +53,6 @@ export const HowItWorks = () => {
           {steps.map((step, index) => (
             <StepCard key={step.number} step={step} index={index} />
           ))}
-        </div>
-
-        {/* Estimated Arrival Badge */}
-        <div className="mt-16 flex justify-center">
-          <EstimatedDateBadge />
         </div>
       </div>
     </section>
