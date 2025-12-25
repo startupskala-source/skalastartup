@@ -34,7 +34,7 @@ export const FloatingConsultButton = ({
   popupBadgeText = "Grátis",
   ctaButtonText = "Agendar chamada",
   ctaButtonAction = () => console.log("CTA clicked"),
-  position = { bottom: "2rem", right: "2rem" },
+  position = { bottom: "1rem", right: "1rem" },
 }: FloatingConsultButtonProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   
@@ -159,7 +159,7 @@ export const FloatingConsultButton = ({
               />
               
               {/* Online Indicator */}
-              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse" />
             </div>
           </div>
         </div>
