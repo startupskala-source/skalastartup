@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MovingBorderButton } from "@/components/ui/moving-border";
 import { AnimatedText, AnimatedLetters } from "@/components/AnimatedText";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Header } from "@/components/Header";
@@ -9,9 +8,9 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Stats } from "@/components/Stats";
 import { FAQ } from "@/components/FAQ";
 import { MultiStepForm } from "@/components/ui/multistep-form";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
-import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -87,16 +86,15 @@ const Index = () => {
               ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
-            <MovingBorderButton
-              as="a"
-              href="#contato"
-              borderRadius="0.5rem"
-              className="px-10 py-4 font-display font-medium tracking-wide"
-              duration={3000}
-            >
-              Começar agora
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </MovingBorderButton>
+            <Button variant="hero" size="xl" asChild>
+              <a href="#contato">
+                Começar agora
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button variant="minimal" size="xl" asChild>
+              <a href="#servicos">Ver serviços</a>
+            </Button>
           </div>
 
           {/* Bottom decorative line */}
@@ -165,20 +163,7 @@ const Index = () => {
       <RatingSection />
 
       <Footer />
-
-      {/* Floating Consult Button */}
-      <FloatingConsultButton
-        imageSrc="https://randomuser.me/api/portraits/men/32.jpg"
-        revolvingText="FALE CONOSCO - CONSULTORIA GRÁTIS - "
-        revolvingSpeed={12}
-        popupHeading="Chamada de 30 minutos"
-        popupDescription="Uma conversa rápida e gratuita com nossa equipe para entender seu projeto e ver como podemos ajudar."
-        popupBadgeText="Grátis"
-        ctaButtonText="Agendar chamada"
-        ctaButtonAction={() => {
-          document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
+      <WhatsAppButton />
     </main>
   );
 };

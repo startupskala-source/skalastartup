@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import DotCard from "@/components/ui/moving-dot-card";
 
 const stats = [
   { value: 200, suffix: "+", label: "Clientes atendidos" },
@@ -12,34 +12,70 @@ export const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 md:py-28 px-4 md:px-8 border-y border-border">
+    <section className="py-16 md:py-24 px-6 md:px-12 border-y border-border">
       <div
         ref={ref}
-        className={`container mx-auto max-w-4xl transition-all duration-700 ${
+        className={`container mx-auto max-w-5xl transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <div
+            <StatItem
               key={stat.label}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              className={`transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-            >
-              {isVisible && (
-                <DotCard
-                  target={stat.value}
-                  duration={2000}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                />
-              )}
-            </div>
+              stat={stat}
+              index={index}
+              isVisible={isVisible}
+            />
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+const StatItem = ({
+  stat,
+  index,
+  isVisible,
+}: {
+  stat: (typeof stats)[0];
+  index: number;
+  isVisible: boolean;
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000;
+    const steps = 60;
+    const increment = stat.value / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= stat.value) {
+        setCount(stat.value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [isVisible, stat.value]);
+
+  return (
+    <div
+      className="text-center"
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <p className="font-display text-4xl md:text-5xl font-bold mb-2">
+        {count}
+        <span className="text-muted-foreground">{stat.suffix}</span>
+      </p>
+      <p className="text-muted-foreground text-sm">{stat.label}</p>
+    </div>
   );
 };
