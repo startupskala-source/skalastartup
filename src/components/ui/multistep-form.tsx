@@ -17,7 +17,8 @@ type Step = {
 const steps: Step[] = [
   { id: 1, label: "Nome", field: "name", placeholder: "Seu nome completo" },
   { id: 2, label: "Email", field: "email", placeholder: "seu@email.com" },
-  { id: 3, label: "Objetivo", field: "goal", placeholder: "Como podemos ajudar?" },
+  { id: 3, label: "WhatsApp", field: "whatsapp", placeholder: "(11) 99999-9999" },
+  { id: 4, label: "Mensagem", field: "message", placeholder: "Como podemos ajudar?" },
 ]
 
 export function MultiStepForm() {
@@ -42,7 +43,7 @@ export function MultiStepForm() {
 
   if (isComplete) {
     return (
-      <div className="flex min-h-[300px] items-center justify-center">
+      <div className="flex min-h-[400px] items-center justify-center">
         <div className="relative">
           <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-emerald-500/20 to-emerald-500/0 blur-2xl" />
           <div className="relative flex flex-col items-center gap-4">
@@ -51,7 +52,7 @@ export function MultiStepForm() {
             </div>
             <div className="text-center">
               <p className="text-xl font-semibold">Tudo certo!</p>
-              <p className="text-muted-foreground">{formData.name}</p>
+              <p className="text-muted-foreground">{formData.name}, entraremos em contato em breve.</p>
             </div>
           </div>
         </div>
@@ -133,7 +134,7 @@ export function MultiStepForm() {
         <Button
           onClick={handleNext}
           disabled={!formData[currentStepData.field]}
-          className="w-full h-12 text-base group"
+          className="w-full h-12 text-base"
         >
           <span>{currentStep === steps.length - 1 ? "Enviar" : "Continuar"}</span>
           <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

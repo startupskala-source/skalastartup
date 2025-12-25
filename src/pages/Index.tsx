@@ -147,13 +147,19 @@ const Index = () => {
 
       {/* Contact Section */}
       <section id="contato" className="py-24 md:py-32 px-6 md:px-12 bg-secondary">
-        <div className="container mx-auto max-w-xl text-center">
-          <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            Contato
-          </p>
-          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-12">
-            Vamos conversar?
-          </h2>
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-12 md:mb-16">
+            <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-6">
+              Pronto para começar?
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+              Vamos construir o futuro<br />
+              <span className="text-muted-foreground">do seu negócio</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              Entre em contato e descubra como podemos transformar sua operação com automação inteligente.
+            </p>
+          </div>
 
           <MultiStepForm />
         </div>
