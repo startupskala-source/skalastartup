@@ -34,15 +34,24 @@ export default function DotCard({
 
   return (
     <div className="relative w-[160px] h-[120px] p-[2px] rounded-xl overflow-hidden group">
-      <div className="absolute w-5 h-5 bg-dot-glow rounded-full blur-sm animate-move-dot" />
+      {/* Moving dot */}
+      <div className="absolute w-5 h-5 bg-dot-glow rounded-full blur-sm animate-move-dot z-20" />
 
+      {/* Content */}
       <div className="relative flex flex-col items-center justify-center h-full bg-background rounded-xl z-10 border border-border/50">
         <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        
         <p className="font-display text-3xl font-bold text-foreground leading-none">
           {count}
           <span className="text-muted-foreground">{suffix}</span>
         </p>
         <p className="text-muted-foreground text-xs text-center mt-2">{label}</p>
+
+        {/* Corner dots */}
+        <div className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+        <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+        <div className="absolute bottom-3 left-3 w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+        <div className="absolute bottom-3 right-3 w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
       </div>
     </div>
   );
