@@ -10,6 +10,7 @@ import { FAQ } from "@/components/FAQ";
 import { MultiStepForm } from "@/components/ui/multistep-form";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
+import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -162,6 +163,20 @@ const Index = () => {
       <RatingSection />
 
       <Footer />
+
+      {/* Floating Consult Button */}
+      <FloatingConsultButton
+        imageSrc="https://randomuser.me/api/portraits/men/32.jpg"
+        revolvingText="FALE CONOSCO - CONSULTORIA GRÁTIS - "
+        revolvingSpeed={12}
+        popupHeading="Chamada de 30 minutos"
+        popupDescription="Uma conversa rápida e gratuita com nossa equipe para entender seu projeto e ver como podemos ajudar."
+        popupBadgeText="Grátis"
+        ctaButtonText="Agendar chamada"
+        ctaButtonAction={() => {
+          document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      />
     </main>
   );
 };
