@@ -12,14 +12,14 @@ export const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 md:py-24 px-6 md:px-12 border-y border-border">
+    <section className="py-20 md:py-28 px-4 md:px-8 border-y border-border">
       <div
         ref={ref}
-        className={`container mx-auto max-w-6xl transition-all duration-700 ${
+        className={`container mx-auto max-w-4xl transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 place-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 place-items-center">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
