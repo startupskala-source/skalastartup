@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getProjectById } from "@/data/projects";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -50,7 +50,6 @@ const ProjectDetail = () => {
       <CTASection />
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 };
