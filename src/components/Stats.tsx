@@ -19,7 +19,7 @@ export const Stats = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 place-items-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 place-items-center">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
