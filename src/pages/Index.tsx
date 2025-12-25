@@ -4,6 +4,11 @@ import { AnimatedText, AnimatedLetters } from "@/components/AnimatedText";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { HowItWorks } from "@/components/HowItWorks";
+import { Stats } from "@/components/Stats";
+import { FAQ } from "@/components/FAQ";
+import { ContactForm } from "@/components/ContactForm";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -126,29 +131,37 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* How It Works Section */}
+      <HowItWorks />
+
+      {/* Stats Section */}
+      <Stats />
+
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Contact Section */}
       <section id="contato" className="py-24 md:py-32 px-6 md:px-12 bg-secondary">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-6">
-            Pronto para começar?
-          </p>
-          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
-            Vamos construir o futuro<br />
-            <span className="text-muted-foreground">do seu negócio</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-12">
-            Entre em contato e descubra como podemos transformar sua operação com automação inteligente.
-          </p>
-          <Button variant="hero" size="xl" asChild>
-            <a href="mailto:contato@skala.com.br">
-              Fale conosco
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-12 md:mb-16">
+            <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-6">
+              Pronto para começar?
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+              Vamos construir o futuro<br />
+              <span className="text-muted-foreground">do seu negócio</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              Entre em contato e descubra como podemos transformar sua operação com automação inteligente.
+            </p>
+          </div>
+
+          <ContactForm />
         </div>
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };
