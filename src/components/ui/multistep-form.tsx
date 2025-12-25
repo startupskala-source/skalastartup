@@ -49,9 +49,11 @@ export function MultiStepForm() {
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10">
               <CheckIcon className="h-10 w-10 text-emerald-500" />
             </div>
-            <div className="text-center">
-              <p className="text-xl font-semibold">Tudo certo!</p>
-              <p className="text-muted-foreground">{formData.name}</p>
+            <div className="text-center space-y-2">
+              <p className="text-xl font-semibold">Tudo certo, {formData.name}!</p>
+              <p className="text-muted-foreground text-sm max-w-xs">
+                Um de nossos closers irá entrar em contato com você dentro de 25 minutos.
+              </p>
             </div>
           </div>
         </div>
