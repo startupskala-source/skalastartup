@@ -12,6 +12,7 @@ import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
 import { ArrowRight } from "lucide-react";
+import consultantAvatar from "@/assets/consultant-avatar.jpg";
 
 const Index = () => {
   const [lineVisible, setLineVisible] = useState(false);
@@ -170,6 +171,8 @@ const Index = () => {
 
       <Footer />
       <FloatingConsultButton
+        imageSrc={consultantAvatar}
+        imageAlt="Consultor SKALA"
         revolvingText="FALE CONOSCO - CONSULTORIA GRÁTIS - "
         popupHeading="Consultoria Gratuita"
         popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar."
