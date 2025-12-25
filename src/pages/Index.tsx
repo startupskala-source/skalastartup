@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MovingBorderButton } from "@/components/ui/moving-border";
 import { AnimatedText, AnimatedLetters } from "@/components/AnimatedText";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Header } from "@/components/Header";
@@ -86,15 +87,25 @@ const Index = () => {
               ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
-            <Button variant="hero" size="xl" asChild>
-              <a href="#contato">
-                Começar agora
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="minimal" size="xl" asChild>
-              <a href="#servicos">Ver serviços</a>
-            </Button>
+            <MovingBorderButton
+              as="a"
+              href="#contato"
+              borderRadius="0.5rem"
+              className="px-10 py-4 font-display font-medium tracking-wide"
+              duration={3000}
+            >
+              Começar agora
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </MovingBorderButton>
+            <MovingBorderButton
+              as="a"
+              href="#servicos"
+              borderRadius="0.5rem"
+              className="px-10 py-4 font-display font-medium tracking-wide"
+              duration={3000}
+            >
+              Ver serviços
+            </MovingBorderButton>
           </div>
 
           {/* Bottom decorative line */}
