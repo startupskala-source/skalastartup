@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import skalaLogo from "@/assets/skala-logo.jpg";
+import skalaLogo from "@/assets/skala-logo.svg";
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,7 +18,7 @@ export const Header = () => {
       <div className="container mx-auto px-6 md:px-12 py-6">
         <nav className="flex items-center justify-between">
           <a href="/" className="flex items-center">
-            <img src={skalaLogo} alt="SKALA" className="h-8 md:h-10 w-auto" />
+            <img src={skalaLogo} alt="SKALA" className="h-[60px] w-[200px]" />
           </a>
           
           <a
