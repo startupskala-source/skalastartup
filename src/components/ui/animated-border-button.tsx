@@ -27,31 +27,33 @@ export interface AnimatedBorderButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof animatedButtonVariants> {
   asChild?: boolean;
-  gradientColors?: string;
 }
 
 const AnimatedBorderButton = React.forwardRef<HTMLButtonElement, AnimatedBorderButtonProps>(
-  ({ className, size, asChild = false, gradientColors, children, ...props }, ref) => {
+  ({ className, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     
     return (
       <div className="relative group">
-        {/* Animated gradient border */}
+        {/* Outer glow effect */}
         <motion.div
-          className={cn(
-            "absolute -inset-[2px] rounded-lg opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300",
-            gradientColors || "bg-gradient-to-r from-primary via-primary/50 to-primary"
-          )}
-          animate={{
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          }}
+          className="absolute -inset-1 rounded-lg bg-[conic-gradient(from_0deg,hsl(var(--primary)),hsl(var(--primary)/0.3),hsl(var(--primary)))] opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"
+          animate={{ rotate: 360 }}
           transition={{
             duration: 3,
             repeat: Infinity,
             ease: "linear",
           }}
-          style={{
-            backgroundSize: "200% 200%",
+        />
+        
+        {/* Spinning border */}
+        <motion.div
+          className="absolute inset-0 rounded-lg bg-[conic-gradient(from_0deg,hsl(var(--primary)),transparent_40%,transparent_60%,hsl(var(--primary)))]"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
           }}
         />
         
@@ -59,7 +61,7 @@ const AnimatedBorderButton = React.forwardRef<HTMLButtonElement, AnimatedBorderB
         <Comp
           className={cn(
             animatedButtonVariants({ size }),
-            "relative bg-background text-foreground rounded-lg font-display font-medium tracking-wide hover:scale-[1.02] active:scale-[0.98] z-10",
+            "relative m-[2px] bg-background text-foreground rounded-lg font-display font-medium tracking-wide hover:scale-[1.02] active:scale-[0.98] z-10",
             className
           )}
           ref={ref}
