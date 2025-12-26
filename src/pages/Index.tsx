@@ -14,11 +14,9 @@ import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
 import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
-
 const Index = () => {
   const [lineVisible, setLineVisible] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
-
   useEffect(() => {
     const lineTimer = setTimeout(() => setLineVisible(true), 1200);
     const ctaTimer = setTimeout(() => setCtaVisible(true), 1600);
@@ -27,38 +25,27 @@ const Index = () => {
       clearTimeout(ctaTimer);
     };
   }, []);
-
-  const services = [
-    {
-      number: "01",
-      title: "Cardápio Digital",
-      description: "Automatize seu cardápio com QR Code, atualizações em tempo real e integração com seu sistema de pedidos.",
-    },
-    {
-      number: "02",
-      title: "Atendimento Inteligente",
-      description: "Chatbots e automações que respondem seus clientes 24/7, aumentando conversões e satisfação.",
-    },
-    {
-      number: "03",
-      title: "Websites & Lojas Online",
-      description: "Sites modernos e lojas virtuais que convertem visitantes em clientes fiéis.",
-    },
-  ];
-
-  return (
-    <main className="min-h-screen bg-background">
+  const services = [{
+    number: "01",
+    title: "Cardápio Digital",
+    description: "Automatize seu cardápio com QR Code, atualizações em tempo real e integração com seu sistema de pedidos."
+  }, {
+    number: "02",
+    title: "Atendimento Inteligente",
+    description: "Chatbots e automações que respondem seus clientes 24/7, aumentando conversões e satisfação."
+  }, {
+    number: "03",
+    title: "Websites & Lojas Online",
+    description: "Sites modernos e lojas virtuais que convertem visitantes em clientes fiéis."
+  }];
+  return <main className="min-h-screen bg-background">
       <Header />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 pt-24">
         <div className="container mx-auto max-w-5xl text-center">
           {/* Decorative line */}
-          <div
-            className={`mx-auto w-px h-24 bg-border mb-12 transition-all duration-1000 origin-top ${
-              lineVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
-            }`}
-          />
+          <div className={`mx-auto w-px h-24 bg-border mb-12 transition-all duration-1000 origin-top ${lineVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
 
           {/* Main headline */}
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
@@ -72,42 +59,27 @@ const Index = () => {
           </h1>
 
           {/* Subheadline */}
-          <div
-            className={`transition-all duration-700 delay-[1400ms] ${
-              ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
+          <div className={`transition-all duration-700 delay-[1400ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
               Transformamos a presença digital do seu negócio com automações inteligentes para cardápios, atendimento e vendas online.
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-[1600ms] ${
-              ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
-            <ShimmerButton
-              shimmerColor="#000000"
-              background="rgba(255, 255, 255, 1)"
-              className="text-black font-medium text-base"
-              onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-[1600ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
+            <ShimmerButton shimmerColor="#000000" background="rgba(255, 255, 255, 1)" className="text-black font-medium text-base" onClick={() => document.getElementById('contato')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
               Começar agora
               <ArrowRight className="ml-2 h-4 w-4" />
             </ShimmerButton>
             <Button variant="minimal" size="xl" asChild>
-              <a href="#servicos">Ver serviços</a>
+              
             </Button>
           </div>
 
           {/* Bottom decorative line */}
-          <div
-            className={`mx-auto w-px h-32 bg-gradient-to-b from-border to-transparent mt-24 transition-all duration-1000 origin-top delay-[1800ms] ${
-              ctaVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
-            }`}
-          />
+          <div className={`mx-auto w-px h-32 bg-gradient-to-b from-border to-transparent mt-24 transition-all duration-1000 origin-top delay-[1800ms] ${ctaVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
         </div>
       </section>
 
@@ -125,15 +97,7 @@ const Index = () => {
           </div>
 
           <div className="space-y-0">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.number}
-                number={service.number}
-                title={service.title}
-                description={service.description}
-                delay={index * 200}
-              />
-            ))}
+            {services.map((service, index) => <ServiceCard key={service.number} number={service.number} title={service.title} description={service.description} delay={index * 200} />)}
           </div>
         </div>
       </section>
@@ -174,21 +138,12 @@ const Index = () => {
       <RatingSection />
 
       <Footer />
-      <FloatingConsultButton
-        buttonSize={100}
-        imageSize={60}
-        imageSrc={consultantAvatar}
-        imageAlt="Consultor SKALA"
-        revolvingText="FALE CONOSCO - CONSULTORIA - "
-        popupHeading="Consultoria Gratuita"
-        popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar."
-        popupBadgeText="Grátis"
-        ctaButtonText="Agendar conversa"
-        ctaButtonAction={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-        position={{ bottom: "1.5rem", right: "1.5rem" }}
-      />
-    </main>
-  );
+      <FloatingConsultButton buttonSize={100} imageSize={60} imageSrc={consultantAvatar} imageAlt="Consultor SKALA" revolvingText="FALE CONOSCO - CONSULTORIA - " popupHeading="Consultoria Gratuita" popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar." popupBadgeText="Grátis" ctaButtonText="Agendar conversa" ctaButtonAction={() => document.getElementById('contato')?.scrollIntoView({
+      behavior: 'smooth'
+    })} position={{
+      bottom: "1.5rem",
+      right: "1.5rem"
+    }} />
+    </main>;
 };
-
 export default Index;
