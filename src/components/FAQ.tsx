@@ -38,18 +38,18 @@ export const FAQ = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="faq" className="py-24 md:py-32 px-6 md:px-12">
+    <section id="faq" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12">
       <div className="container mx-auto max-w-3xl">
         <div
           ref={ref}
-          className={`mb-12 md:mb-16 text-center transition-all duration-700 ${
+          className={`mb-8 sm:mb-12 md:mb-16 text-center transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="font-display text-xs sm:text-sm tracking-widest text-muted-foreground uppercase mb-3 sm:mb-4">
             Perguntas Frequentes
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">
             Tire suas dúvidas
           </h2>
         </div>
@@ -84,10 +84,10 @@ const FAQItem = ({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <AccordionItem value={value} className="border-border">
-        <AccordionTrigger className="text-left font-display text-lg font-medium hover:no-underline py-6">
+        <AccordionTrigger className="text-left font-display text-base sm:text-lg font-medium hover:no-underline py-4 sm:py-6">
           {faq.question}
         </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground pb-6">
+        <AccordionContent className="text-muted-foreground text-sm sm:text-base pb-4 sm:pb-6">
           {faq.answer}
         </AccordionContent>
       </AccordionItem>

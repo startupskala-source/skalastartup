@@ -32,24 +32,24 @@ export const HowItWorks = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="como-funciona" className="py-24 md:py-32 px-6 md:px-12 bg-secondary">
+    <section id="como-funciona" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-secondary">
       <div className="container mx-auto max-w-5xl">
         <div
           ref={ref}
-          className={`mb-16 md:mb-24 transition-all duration-700 ${
+          className={`mb-10 sm:mb-16 md:mb-24 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="font-display text-xs sm:text-sm tracking-widest text-muted-foreground uppercase mb-3 sm:mb-4">
             Como Funciona
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">
             Do contato à entrega <br />
             <span className="text-muted-foreground">em 4 passos simples</span>
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <StepCard key={step.number} step={step} index={index} />
           ))}
@@ -78,16 +78,16 @@ const StepCard = ({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <div className="flex flex-col items-start">
-        <div className="flex items-center gap-4 mb-4">
-          <span className="font-display text-5xl font-bold text-border">
+        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+          <span className="font-display text-4xl sm:text-5xl font-bold text-border">
             {step.number}
           </span>
-          <div className="p-3 rounded-full bg-background border border-border">
-            <Icon className="h-5 w-5 text-foreground" />
+          <div className="p-2 sm:p-3 rounded-full bg-background border border-border">
+            <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" />
           </div>
         </div>
-        <h3 className="font-display text-xl font-bold mb-2">{step.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <h3 className="font-display text-lg sm:text-xl font-bold mb-1.5 sm:mb-2">{step.title}</h3>
+        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
           {step.description}
         </p>
       </div>
