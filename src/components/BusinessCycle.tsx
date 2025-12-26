@@ -264,13 +264,14 @@ const BusinessCycle = () => {
 
         {/* Mobile Layout - Infinity Loop like Desktop */}
         <div className="md:hidden">
-          <div className="relative w-full h-[320px]">
+          <div className="relative w-full max-w-[340px] mx-auto h-[280px]">
             {/* SVG Infinity Path */}
             <svg
               className="absolute inset-0 w-full h-full"
-              viewBox="0 0 320 280"
+              viewBox="0 0 340 240"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
             >
               <defs>
                 <linearGradient id="mobileLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -289,10 +290,10 @@ const BusinessCycle = () => {
 
               {/* Left Loop */}
               <path
-                d={`M 160 140 
-                   C 160 70, 80 30, 50 70
-                   C 20 110, 20 190, 50 220
-                   C 80 250, 160 210, 160 140`}
+                d={`M 170 120 
+                   C 170 60, 100 25, 60 60
+                   C 20 95, 20 165, 60 195
+                   C 100 225, 170 180, 170 120`}
                 stroke="url(#mobileLineGradient)"
                 strokeWidth="1.5"
                 fill="none"
@@ -306,10 +307,10 @@ const BusinessCycle = () => {
 
               {/* Right Loop */}
               <path
-                d={`M 160 140 
-                   C 160 70, 240 30, 270 70
-                   C 300 110, 300 190, 270 220
-                   C 240 250, 160 210, 160 140`}
+                d={`M 170 120 
+                   C 170 60, 240 25, 280 60
+                   C 320 95, 320 165, 280 195
+                   C 240 225, 170 180, 170 120`}
                 stroke="url(#mobileLineGradient)"
                 strokeWidth="1.5"
                 fill="none"
@@ -326,10 +327,10 @@ const BusinessCycle = () => {
                 <animateMotion
                   dur="3s"
                   repeatCount="indefinite"
-                  path={`M 160 140 
-                   C 160 70, 80 30, 50 70
-                   C 20 110, 20 190, 50 220
-                   C 80 250, 160 210, 160 140`}
+                  path={`M 170 120 
+                   C 170 60, 100 25, 60 60
+                   C 20 95, 20 165, 60 195
+                   C 100 225, 170 180, 170 120`}
                 />
               </circle>
 
@@ -339,37 +340,37 @@ const BusinessCycle = () => {
                   dur="3s"
                   repeatCount="indefinite"
                   begin="1.5s"
-                  path={`M 160 140 
-                   C 160 70, 240 30, 270 70
-                   C 300 110, 300 190, 270 220
-                   C 240 250, 160 210, 160 140`}
+                  path={`M 170 120 
+                   C 170 60, 240 25, 280 60
+                   C 320 95, 320 165, 280 195
+                   C 240 225, 170 180, 170 120`}
                 />
               </circle>
 
               {/* Direction arrows */}
               <polygon
-                points="75,45 82,55 68,55"
+                points="85,38 92,50 78,50"
                 fill="hsl(var(--primary))"
                 fillOpacity="0.7"
                 className={`transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ transitionDelay: '0.8s' }}
               />
               <polygon
-                points="110,245 100,235 100,255"
+                points="115,212 105,200 105,224"
                 fill="hsl(var(--primary))"
                 fillOpacity="0.7"
                 className={`transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ transitionDelay: '1s' }}
               />
               <polygon
-                points="245,45 238,55 252,55"
+                points="255,38 248,50 262,50"
                 fill="hsl(var(--primary))"
                 fillOpacity="0.7"
                 className={`transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ transitionDelay: '1.2s' }}
               />
               <polygon
-                points="210,245 220,235 220,255"
+                points="225,212 235,200 235,224"
                 fill="hsl(var(--primary))"
                 fillOpacity="0.7"
                 className={`transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
@@ -379,18 +380,18 @@ const BusinessCycle = () => {
 
             {/* Engajamento - Top Left */}
             <div
-              className={`absolute top-0 left-2 flex flex-col items-center transition-all duration-700 ${
+              className={`absolute top-0 left-0 flex flex-col items-center transition-all duration-700 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               }`}
               style={{ transitionDelay: '300ms' }}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-lg" />
-                <div className="relative w-10 h-10 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
+                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md" />
+                <div className="relative w-11 h-11 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
                   <MessageCircle className="w-5 h-5 text-primary" />
                 </div>
               </div>
-              <span className="text-foreground font-bold text-[10px]">Engajamento</span>
+              <span className="text-foreground font-bold text-[11px]">Engajamento</span>
             </div>
 
             {/* Monetização - Center */}
@@ -402,43 +403,43 @@ const BusinessCycle = () => {
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/40 rounded-xl blur-xl" />
-                <div className="relative w-12 h-12 rounded-xl bg-primary/10 border-2 border-primary/50 flex items-center justify-center mb-1">
-                  <TrendingUp className="w-6 h-6 text-primary" />
+                <div className="relative w-14 h-14 rounded-xl bg-primary/10 border-2 border-primary/50 flex items-center justify-center mb-1">
+                  <TrendingUp className="w-7 h-7 text-primary" />
                 </div>
               </div>
-              <span className="text-foreground font-bold text-xs">Monetização</span>
+              <span className="text-foreground font-bold text-sm">Monetização</span>
             </div>
 
             {/* Retenção - Top Right */}
             <div
-              className={`absolute top-0 right-2 flex flex-col items-center transition-all duration-700 ${
+              className={`absolute top-0 right-0 flex flex-col items-center transition-all duration-700 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               }`}
               style={{ transitionDelay: '700ms' }}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-lg" />
-                <div className="relative w-10 h-10 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
+                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md" />
+                <div className="relative w-11 h-11 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
                   <Magnet className="w-5 h-5 text-primary" />
                 </div>
               </div>
-              <span className="text-foreground font-bold text-[10px]">Retenção</span>
+              <span className="text-foreground font-bold text-[11px]">Retenção</span>
             </div>
 
             {/* Aquisição - Bottom Left */}
             <div
-              className={`absolute bottom-2 left-2 flex flex-col items-center transition-all duration-700 ${
+              className={`absolute bottom-0 left-0 flex flex-col items-center transition-all duration-700 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               }`}
               style={{ transitionDelay: '900ms' }}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-lg" />
-                <div className="relative w-10 h-10 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
+                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md" />
+                <div className="relative w-11 h-11 rounded-lg bg-background border border-primary/30 flex items-center justify-center mb-1">
                   <Handshake className="w-5 h-5 text-primary" />
                 </div>
               </div>
-              <span className="text-foreground font-bold text-[10px]">Aquisição</span>
+              <span className="text-foreground font-bold text-[11px]">Aquisição</span>
             </div>
           </div>
         </div>
