@@ -61,16 +61,16 @@ export function MultiStepForm() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto space-y-8">
+    <div className="w-full max-w-md mx-auto space-y-6 sm:space-y-8 px-2 sm:px-0">
       {/* Step indicators */}
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
             <button
               onClick={() => index < currentStep && setCurrentStep(index)}
               disabled={index > currentStep}
               className={cn(
-                "group relative flex h-9 w-9 items-center justify-center rounded-full transition-all duration-700 ease-out",
+                "group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full transition-all duration-700 ease-out",
                 "disabled:cursor-not-allowed",
                 index < currentStep && "bg-foreground/10 text-foreground/60",
                 index === currentStep && "bg-foreground text-background shadow-[0_0_20px_-5px_rgba(0,0,0,0.3)]",
@@ -78,9 +78,9 @@ export function MultiStepForm() {
               )}
             >
               {index < currentStep ? (
-                <CheckIcon className="h-4 w-4" />
+                <CheckIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               ) : (
-                <span className="text-sm font-medium">{step.id}</span>
+                <span className="text-xs sm:text-sm font-medium">{step.id}</span>
               )}
               {index === currentStep && (
                 <span className="absolute -inset-1 rounded-full border border-foreground/20 animate-pulse" />
@@ -88,7 +88,7 @@ export function MultiStepForm() {
             </button>
 
             {index < steps.length - 1 && (
-              <div className="mx-2 h-[2px] w-8 overflow-hidden rounded-full bg-muted">
+              <div className="mx-1.5 sm:mx-2 h-[2px] w-6 sm:w-8 overflow-hidden rounded-full bg-muted">
                 <div
                   className="h-full bg-foreground/60 transition-all duration-700"
                   style={{ width: index < currentStep ? "100%" : "0%" }}
@@ -108,13 +108,13 @@ export function MultiStepForm() {
       </div>
 
       {/* Form content */}
-      <div className="space-y-6">
-        <div className="space-y-4">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-3 sm:space-y-4">
           <div className="flex items-center justify-between">
-            <Label className="text-base font-medium">
+            <Label className="text-sm sm:text-base font-medium">
               {currentStepData.label}
             </Label>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-xs sm:text-sm text-muted-foreground">
               {currentStep + 1}/{steps.length}
             </span>
           </div>
@@ -126,7 +126,7 @@ export function MultiStepForm() {
               value={formData[currentStepData.field] || ""}
               onChange={(e) => handleInputChange(currentStepData.field, e.target.value)}
               autoFocus
-              className="h-14 text-base transition-all duration-500 border-border/50 focus:border-foreground/20 bg-background/50 backdrop-blur"
+              className="h-12 sm:h-14 text-sm sm:text-base transition-all duration-500 border-border/50 focus:border-foreground/20 bg-background/50 backdrop-blur"
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ export function MultiStepForm() {
         <Button
           onClick={handleNext}
           disabled={!formData[currentStepData.field]}
-          className="w-full h-12 text-base"
+          className="w-full h-11 sm:h-12 text-sm sm:text-base"
         >
           <span>{currentStep === steps.length - 1 ? "Enviar" : "Continuar"}</span>
           <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -143,7 +143,7 @@ export function MultiStepForm() {
         {currentStep > 0 && (
           <button
             onClick={() => setCurrentStep(currentStep - 1)}
-            className="w-full text-center text-sm text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300"
+            className="w-full text-center text-xs sm:text-sm text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300"
           >
             Voltar
           </button>

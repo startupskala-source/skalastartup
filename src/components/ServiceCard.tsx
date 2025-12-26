@@ -21,14 +21,14 @@ export const ServiceCard = ({ number, title, description, delay = 0 }: ServiceCa
         isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
       }`}
     >
-      <div className="relative border-t border-border py-8 md:py-12">
-        <div className="flex items-start gap-6 md:gap-12">
-          <span className="font-display text-sm text-muted-foreground">{number}</span>
+      <div className="relative border-t border-border py-6 sm:py-8 md:py-12">
+        <div className="flex items-start gap-4 sm:gap-6 md:gap-12">
+          <span className="font-display text-xs sm:text-sm text-muted-foreground">{number}</span>
           <div className="flex-1">
-            <h3 className="font-display text-xl md:text-2xl font-semibold mb-3 group-hover:translate-x-2 transition-transform duration-300">
+            <h3 className="font-display text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 group-hover:translate-x-2 transition-transform duration-300">
               {title}
             </h3>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl">
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
               {description}
             </p>
           </div>

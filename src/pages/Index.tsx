@@ -42,13 +42,13 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 pt-24">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 pt-20 sm:pt-24">
         <div className="container mx-auto max-w-5xl text-center">
           {/* Decorative line */}
-          <div className={`mx-auto w-px h-24 bg-border mb-12 transition-all duration-1000 origin-top ${lineVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
+          <div className={`mx-auto w-px h-16 sm:h-24 bg-border mb-8 sm:mb-12 transition-all duration-1000 origin-top ${lineVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
 
           {/* Main headline */}
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]">
             <AnimatedLetters text="Automatize." delay={200} />
             <br />
             <span className="text-muted-foreground">
@@ -60,37 +60,37 @@ const Index = () => {
 
           {/* Subheadline */}
           <div className={`transition-all duration-700 delay-[1400ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2">
               Transformamos a presença digital do seu negócio com automações inteligentes para cardápios, atendimento e vendas online.
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-[1600ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-            <ShimmerButton shimmerColor="#000000" background="rgba(255, 255, 255, 1)" className="text-black font-medium text-base" onClick={() => document.getElementById('contato')?.scrollIntoView({
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-700 delay-[1600ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
+            <ShimmerButton shimmerColor="#000000" background="rgba(255, 255, 255, 1)" className="text-black font-medium text-sm sm:text-base w-full sm:w-auto" onClick={() => document.getElementById('contato')?.scrollIntoView({
             behavior: 'smooth'
           })}>
               Começar agora
               <ArrowRight className="ml-2 h-4 w-4" />
             </ShimmerButton>
-            <Button variant="minimal" size="xl" asChild>
+            <Button variant="minimal" size="xl" className="w-full sm:w-auto" asChild>
               
             </Button>
           </div>
 
           {/* Bottom decorative line */}
-          <div className={`mx-auto w-px h-32 bg-gradient-to-b from-border to-transparent mt-24 transition-all duration-1000 origin-top delay-[1800ms] ${ctaVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
+          <div className={`mx-auto w-px h-20 sm:h-32 bg-gradient-to-b from-border to-transparent mt-16 sm:mt-24 transition-all duration-1000 origin-top delay-[1800ms] ${ctaVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="servicos" className="py-24 md:py-32 px-6 md:px-12">
+      <section id="servicos" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12">
         <div className="container mx-auto max-w-5xl">
-          <div className="mb-16 md:mb-24">
-            <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-4">
+          <div className="mb-12 sm:mb-16 md:mb-24">
+            <p className="font-display text-xs sm:text-sm tracking-widest text-muted-foreground uppercase mb-3 sm:mb-4">
               Nossos Serviços
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight">
               Soluções que <br />
               <span className="text-muted-foreground">impulsionam resultados</span>
             </h2>
@@ -115,17 +115,17 @@ const Index = () => {
       <FAQ />
 
       {/* Contact Section */}
-      <section id="contato" className="py-24 md:py-32 px-6 md:px-12 bg-secondary">
+      <section id="contato" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-secondary">
         <div className="container mx-auto max-w-3xl">
-          <div className="text-center mb-12 md:mb-16">
-            <p className="font-display text-sm tracking-widest text-muted-foreground uppercase mb-6">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <p className="font-display text-xs sm:text-sm tracking-widest text-muted-foreground uppercase mb-4 sm:mb-6">
               Pronto para começar?
             </p>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 sm:mb-8 px-2">
               Vamos construir o futuro<br />
               <span className="text-muted-foreground">do seu negócio</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto px-2">
               Entre em contato e descubra como podemos transformar sua operação com automação inteligente.
             </p>
           </div>
