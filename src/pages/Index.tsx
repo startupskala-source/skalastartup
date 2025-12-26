@@ -12,6 +12,7 @@ import { MultiStepForm } from "@/components/ui/multistep-form";
 import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
+import Testimonials from "@/components/Testimonials";
 import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
 const Index = () => {
@@ -113,6 +114,9 @@ const Index = () => {
 
       {/* FAQ Section */}
       <FAQ />
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Contact Section */}
       <section id="contato" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-secondary">
