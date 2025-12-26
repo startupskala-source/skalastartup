@@ -13,6 +13,7 @@ import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
 import Testimonials from "@/components/Testimonials";
+import ModulesChart from "@/components/ModulesChart";
 import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
 const Index = () => {
@@ -111,6 +112,9 @@ const Index = () => {
 
       {/* Stats Section */}
       <Stats />
+
+      {/* Modules Chart Section */}
+      <ModulesChart />
 
       {/* FAQ Section */}
       <FAQ />
