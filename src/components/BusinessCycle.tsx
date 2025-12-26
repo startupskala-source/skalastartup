@@ -118,12 +118,12 @@ const BusinessCycle = () => {
               {/* Monetização - Center */}
               <g 
                 className={`transition-all duration-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0'}`}
-                style={{ transitionDelay: '600ms', transformOrigin: '200px 145px' }}
+                style={{ transitionDelay: '600ms', transformOrigin: '200px 160px' }}
               >
-                <rect x="168" y="113" width="64" height="64" rx="16" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeWidth="2" />
+                <rect x="168" y="128" width="64" height="64" rx="16" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeWidth="2" />
                 
                 {/* Icon - Trending up */}
-                <g transform="translate(200, 145)">
+                <g transform="translate(200, 160)">
                   <path 
                     d="M-14 10 L-6 0 L2 6 L14 -10" 
                     fill="none" 
@@ -141,8 +141,6 @@ const BusinessCycle = () => {
                     strokeLinejoin="round"
                   />
                 </g>
-                
-                <text x="200" y="198" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="14" fontWeight="bold">Monetização</text>
               </g>
 
               {/* Retenção - Top Right */}
