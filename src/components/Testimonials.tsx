@@ -10,12 +10,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, Quote } from "lucide-react";
 
+import avatar1 from "@/assets/testimonials/avatar-1.jpg";
+import avatar2 from "@/assets/testimonials/avatar-2.jpg";
+import avatar3 from "@/assets/testimonials/avatar-3.jpg";
+import avatar4 from "@/assets/testimonials/avatar-4.jpg";
+import avatar5 from "@/assets/testimonials/avatar-5.jpg";
+
 interface Testimonial {
   id: number;
   name: string;
   role: string;
   company: string;
-  avatar?: string;
+  avatar: string;
   content: string;
   rating: number;
 }
@@ -26,6 +32,7 @@ const testimonials: Testimonial[] = [
     name: "Carlos Eduardo",
     role: "CEO",
     company: "TechSolutions BR",
+    avatar: avatar1,
     content: "A Skala transformou completamente nossa presença digital. O ROI do nosso e-commerce aumentou 300% em apenas 6 meses. Profissionais excepcionais!",
     rating: 5,
   },
@@ -34,6 +41,7 @@ const testimonials: Testimonial[] = [
     name: "Mariana Santos",
     role: "Diretora de Marketing",
     company: "Grupo Inovação",
+    avatar: avatar2,
     content: "Trabalhar com a Skala foi uma experiência incrível. Eles entenderam nossa visão e entregaram um site que superou todas as expectativas.",
     rating: 5,
   },
@@ -42,6 +50,7 @@ const testimonials: Testimonial[] = [
     name: "Roberto Almeida",
     role: "Fundador",
     company: "StartupX",
+    avatar: avatar3,
     content: "Desde que lançamos nosso novo site com a Skala, nossas conversões aumentaram significativamente. O suporte pós-lançamento é impecável.",
     rating: 5,
   },
@@ -50,6 +59,7 @@ const testimonials: Testimonial[] = [
     name: "Ana Carolina",
     role: "Gerente Comercial",
     company: "Bella Moda",
+    avatar: avatar4,
     content: "Nossa loja virtual ficou linda e funcional. Os clientes elogiam a facilidade de navegação e as vendas online cresceram 150%.",
     rating: 5,
   },
@@ -58,6 +68,7 @@ const testimonials: Testimonial[] = [
     name: "Felipe Martins",
     role: "Diretor",
     company: "Construtora Horizonte",
+    avatar: avatar5,
     content: "A equipe da Skala é extremamente profissional e dedicada. Nosso site institucional transmite exatamente a credibilidade que precisávamos.",
     rating: 5,
   },
