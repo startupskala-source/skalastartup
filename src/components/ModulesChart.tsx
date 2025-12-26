@@ -85,24 +85,26 @@ const ModulesChart = () => {
           </h2>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative flex items-end justify-center gap-4 md:gap-8 h-[300px] md:h-[400px]">
-            {/* Level labels on the left */}
-            <div className="absolute left-0 top-0 bottom-16 flex flex-col justify-between text-xs md:text-sm text-muted-foreground font-medium">
-              {levelLabels.map((level) => (
-                <div key={level.label} className="flex items-center">
-                  <span className="mr-2 md:mr-4">{level.label}</span>
-                  <div className="w-[calc(100vw-150px)] md:w-[600px] lg:w-[700px] h-px bg-border/50 absolute left-16 md:left-24" />
+        <div className="max-w-4xl mx-auto overflow-x-auto">
+          <div className="relative min-w-[320px] px-4">
+            {/* Level labels */}
+            <div className="flex flex-col gap-0 mb-4">
+              {levelLabels.map((level, idx) => (
+                <div key={level.label} className="flex items-center h-[60px] md:h-[90px]">
+                  <span className="text-[10px] md:text-xs text-muted-foreground font-medium w-16 md:w-20 shrink-0">
+                    {level.label}
+                  </span>
+                  <div className="flex-1 h-px bg-border/30" />
                 </div>
               ))}
             </div>
 
             {/* Bars container */}
-            <div className="flex items-end justify-center gap-6 md:gap-12 ml-20 md:ml-28 h-full pb-16">
+            <div className="flex items-end justify-around gap-2 sm:gap-4 md:gap-8 h-[180px] sm:h-[220px] md:h-[280px] ml-16 md:ml-20 -mt-[180px] sm:-mt-[220px] md:-mt-[280px] mb-4">
               {modules.map((module, index) => (
-                <div key={index} className="flex flex-col items-center">
+                <div key={index} className="flex flex-col items-center flex-1 max-w-[60px] md:max-w-[80px]">
                   {/* Bar */}
-                  <div className="relative h-[220px] md:h-[320px] w-8 md:w-12 flex items-end">
+                  <div className="relative h-full w-6 sm:w-8 md:w-10 flex items-end">
                     <div
                       className="w-full bg-primary rounded-t-sm transition-all duration-1000 ease-out"
                       style={{
@@ -111,19 +113,25 @@ const ModulesChart = () => {
                       }}
                     />
                   </div>
+                </div>
+              ))}
+            </div>
 
-                  {/* Icon and label */}
-                  <div className="mt-3 flex flex-col items-center text-center">
-                    <div className="text-primary mb-1">{module.icon}</div>
-                    <span className="text-[10px] md:text-xs text-muted-foreground font-medium leading-tight">
-                      {module.label}
-                    </span>
-                    {module.sublabel && (
-                      <span className="text-[10px] md:text-xs text-muted-foreground font-medium leading-tight">
-                        {module.sublabel}
-                      </span>
-                    )}
+            {/* Icons and labels row */}
+            <div className="flex items-start justify-around gap-2 sm:gap-4 md:gap-8 ml-16 md:ml-20 pt-2 border-t border-border/30">
+              {modules.map((module, index) => (
+                <div key={index} className="flex flex-col items-center text-center flex-1 max-w-[60px] md:max-w-[80px]">
+                  <div className="text-primary mb-1">
+                    {module.icon}
                   </div>
+                  <span className="text-[8px] sm:text-[10px] md:text-xs text-muted-foreground font-medium leading-tight">
+                    {module.label}
+                  </span>
+                  {module.sublabel && (
+                    <span className="text-[8px] sm:text-[10px] md:text-xs text-muted-foreground font-medium leading-tight">
+                      {module.sublabel}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
