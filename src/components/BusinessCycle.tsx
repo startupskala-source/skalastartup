@@ -112,7 +112,7 @@ const BusinessCycle = () => {
                   />
                 </g>
                 
-                <text x="50" y="118" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="bold">Engajamento</text>
+                <text x="50" y="42" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="bold">Engajamento</text>
               </g>
 
               {/* Monetização - Center */}
@@ -163,7 +163,7 @@ const BusinessCycle = () => {
                   <rect x="4" y="-12" width="6" height="6" rx="1" fill="hsl(var(--foreground))" />
                 </g>
                 
-                <text x="350" y="118" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="bold">Retenção</text>
+                <text x="350" y="42" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="bold">Retenção</text>
               </g>
 
               {/* Aquisição - Bottom Left */}
