@@ -96,19 +96,6 @@ const BusinessCycle = () => {
                 />
               </circle>
 
-              {/* Direction arrows */}
-              <g className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1s' }}>
-                <polygon points="82,62 90,76 74,76" fill="hsl(var(--foreground))" fillOpacity="0.5" />
-              </g>
-              <g className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1.2s' }}>
-                <polygon points="115,275 103,263 103,287" fill="hsl(var(--foreground))" fillOpacity="0.5" />
-              </g>
-              <g className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1.4s' }}>
-                <polygon points="318,62 310,76 326,76" fill="hsl(var(--foreground))" fillOpacity="0.5" />
-              </g>
-              <g className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1.6s' }}>
-                <polygon points="285,275 297,263 297,287" fill="hsl(var(--foreground))" fillOpacity="0.5" />
-              </g>
 
               {/* Engajamento - Top Left */}
               <g 
