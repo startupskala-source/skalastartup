@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { AnimatedText, AnimatedLetters } from "@/components/AnimatedText";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Header } from "@/components/Header";
@@ -87,12 +88,15 @@ const Index = () => {
               ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
-            <Button variant="hero" size="xl" asChild>
-              <a href="#contato">
-                Começar agora
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+            <ShimmerButton
+              shimmerColor="#000000"
+              background="rgba(255, 255, 255, 1)"
+              className="text-black font-medium text-base"
+              onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Começar agora
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </ShimmerButton>
             <Button variant="minimal" size="xl" asChild>
               <a href="#servicos">Ver serviços</a>
             </Button>
