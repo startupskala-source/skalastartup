@@ -1,47 +1,53 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState, useEffect } from "react";
-import { DollarSign, FileText, Rocket, Lightbulb, BarChart3 } from "lucide-react";
+import { Bot, Brain, Globe, ShoppingCart } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ModuleItem {
   icon: React.ReactNode;
   label: string;
   sublabel?: string;
+  tooltipName: string;
   level: "basic" | "pro" | "advanced";
   height: number; // percentage
 }
 
 const modules: ModuleItem[] = [
   {
-    icon: <DollarSign className="w-5 h-5" />,
-    label: "TIME DE",
-    sublabel: "VENDAS",
-    level: "basic",
-    height: 15,
-  },
-  {
-    icon: <FileText className="w-5 h-5" />,
-    label: "PÁGINAS",
+    icon: <Brain className="w-4 h-4 md:w-5 md:h-5" />,
+    label: "IA",
+    tooltipName: "Inteligência Artificial",
     level: "basic",
     height: 25,
   },
   {
-    icon: <Rocket className="w-5 h-5" />,
-    label: "TRÁFEGO",
-    sublabel: "PAGO",
+    icon: <Bot className="w-4 h-4 md:w-5 md:h-5" />,
+    label: "AGENTE",
+    sublabel: "IA",
+    tooltipName: "Agente de IA Automatizado",
     level: "advanced",
     height: 100,
   },
   {
-    icon: <Lightbulb className="w-5 h-5" />,
-    label: "CRIATIVOS",
+    icon: <Globe className="w-4 h-4 md:w-5 md:h-5" />,
+    label: "WEB",
+    sublabel: "SITE",
+    tooltipName: "Website Profissional",
     level: "pro",
     height: 75,
   },
   {
-    icon: <BarChart3 className="w-5 h-5" />,
-    label: "DASHBOARDS",
-    level: "basic",
-    height: 20,
+    icon: <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />,
+    label: "LOJA",
+    sublabel: "ONLINE",
+    tooltipName: "E-commerce Completo",
+    level: "pro",
+    height: 60,
   },
 ];
 
@@ -100,22 +106,31 @@ const ModulesChart = () => {
             </div>
 
             {/* Bars container */}
-            <div className="flex items-end justify-around gap-2 sm:gap-4 md:gap-8 h-[180px] sm:h-[220px] md:h-[280px] ml-16 md:ml-20 -mt-[180px] sm:-mt-[220px] md:-mt-[280px] mb-4">
-              {modules.map((module, index) => (
-                <div key={index} className="flex flex-col items-center flex-1 max-w-[60px] md:max-w-[80px]">
-                  {/* Bar */}
-                  <div className="relative h-full w-6 sm:w-8 md:w-10 flex items-end">
-                    <div
-                      className="w-full bg-primary rounded-t-sm transition-all duration-1000 ease-out"
-                      style={{
-                        height: `${animatedHeights[index]}%`,
-                        transitionDelay: `${index * 150}ms`,
-                      }}
-                    />
+            <TooltipProvider>
+              <div className="flex items-end justify-around gap-2 sm:gap-4 md:gap-8 h-[180px] sm:h-[220px] md:h-[280px] ml-16 md:ml-20 -mt-[180px] sm:-mt-[220px] md:-mt-[280px] mb-4">
+                {modules.map((module, index) => (
+                  <div key={index} className="flex flex-col items-center flex-1 max-w-[60px] md:max-w-[80px]">
+                    {/* Bar with Tooltip */}
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="relative h-full w-6 sm:w-8 md:w-10 flex items-end cursor-pointer">
+                          <div
+                            className="w-full bg-primary rounded-t-sm transition-all duration-1000 ease-out hover:bg-primary/80"
+                            style={{
+                              height: `${animatedHeights[index]}%`,
+                              transitionDelay: `${index * 150}ms`,
+                            }}
+                          />
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="font-medium">{module.tooltipName}</p>
+                      </TooltipContent>
+                    </Tooltip>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </TooltipProvider>
 
             {/* Icons and labels row */}
             <div className="flex items-start justify-around gap-2 sm:gap-4 md:gap-8 ml-16 md:ml-20 pt-2 border-t border-border/30">
