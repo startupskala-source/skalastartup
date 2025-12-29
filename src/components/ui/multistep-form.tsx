@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { CheckIcon, ArrowRightIcon } from "lucide-react"
+import { CheckIcon, ArrowRightIcon, Loader2 } from "lucide-react"
+import { supabase } from "@/integrations/supabase/client"
+import { useToast } from "@/hooks/use-toast"
 
 type Step = {
   id: number
@@ -25,12 +27,46 @@ export function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [isComplete, setIsComplete] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      setIsComplete(true)
+      // Submit form and send WhatsApp notification
+      setIsSubmitting(true)
+      try {
+        const { data, error } = await supabase.functions.invoke('send-whatsapp', {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            whatsapp: formData.whatsapp,
+            message: formData.message || ""
+          }
+        })
+
+        if (error) {
+          console.error("Error sending notification:", error)
+          toast({
+            title: "Erro",
+            description: "Ocorreu um erro ao enviar. Tente novamente.",
+            variant: "destructive"
+          })
+        } else {
+          console.log("Notification sent:", data)
+          setIsComplete(true)
+        }
+      } catch (err) {
+        console.error("Error:", err)
+        toast({
+          title: "Erro",
+          description: "Ocorreu um erro ao enviar. Tente novamente.",
+          variant: "destructive"
+        })
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -133,11 +169,20 @@ export function MultiStepForm() {
 
         <Button
           onClick={handleNext}
-          disabled={!formData[currentStepData.field]}
+          disabled={!formData[currentStepData.field] || isSubmitting}
           className="w-full h-11 sm:h-12 text-sm sm:text-base"
         >
-          <span>{currentStep === steps.length - 1 ? "Enviar" : "Continuar"}</span>
-          <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <span>Enviando...</span>
+            </>
+          ) : (
+            <>
+              <span>{currentStep === steps.length - 1 ? "Enviar" : "Continuar"}</span>
+              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </>
+          )}
         </Button>
 
         {currentStep > 0 && (
