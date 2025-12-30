@@ -117,10 +117,25 @@ export const PricingSection = () => {
               }`}
             >
               {pkg.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold">
+                <motion.div 
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    boxShadow: [
+                      "0 0 0 0 rgba(var(--accent), 0)",
+                      "0 0 0 8px rgba(var(--accent), 0.3)",
+                      "0 0 0 0 rgba(var(--accent), 0)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
                   <Star className="w-4 h-4 fill-current" />
                   Mais Popular
-                </div>
+                </motion.div>
               )}
 
               <div className="mb-6">
@@ -164,7 +179,7 @@ export const PricingSection = () => {
                 <ul className="space-y-2">
                   {pkg.excludes.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <X className={`w-4 h-4 mt-0.5 flex-shrink-0 ${pkg.featured ? "text-primary-foreground/50" : "text-muted-foreground/50"}`} />
+                      <X className="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" />
                       <span className={`text-sm ${pkg.featured ? "text-primary-foreground/60" : "text-muted-foreground/70"}`}>
                         {item}
                       </span>
