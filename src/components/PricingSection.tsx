@@ -13,7 +13,7 @@ interface Package {
 const packages: Package[] = [
   {
     name: "START",
-    price: "R$ 1.500",
+    price: "R$ 850",
     target: "Negócios que precisam começar do jeito certo, com presença profissional e anúncios organizados.",
     includes: [
       "Tráfego pago (Meta ou Google)",
@@ -35,7 +35,7 @@ const packages: Package[] = [
   },
   {
     name: "PERFORMANCE",
-    price: "R$ 2.200",
+    price: "R$ 1.497",
     featured: true,
     target: "Negócios que já querem crescer com imagem forte e marketing organizado.",
     includes: [
