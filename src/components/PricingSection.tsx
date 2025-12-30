@@ -148,7 +148,7 @@ export const PricingSection = () => {
                 <ul className="space-y-2">
                   {pkg.includes.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${pkg.featured ? "text-primary-foreground" : "text-primary"}`} />
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-500" />
                       <span className={`text-sm ${pkg.featured ? "text-primary-foreground/90" : "text-muted-foreground"}`}>
                         {item}
                       </span>
