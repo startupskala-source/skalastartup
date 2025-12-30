@@ -15,6 +15,7 @@ import { RatingSection } from "@/components/RatingSection";
 import Testimonials from "@/components/Testimonials";
 import ModulesChart from "@/components/ModulesChart";
 import BusinessCycle from "@/components/BusinessCycle";
+import { PricingSection } from "@/components/PricingSection";
 import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
 const Index = () => {
@@ -119,6 +120,9 @@ const Index = () => {
 
       {/* Business Cycle Section */}
       <BusinessCycle />
+
+      {/* Pricing Section */}
+      <PricingSection />
 
       {/* FAQ Section */}
       <FAQ />
