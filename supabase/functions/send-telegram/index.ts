@@ -21,13 +21,25 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const TELEGRAM_BOT_TOKEN = Deno.env.get("TELEGRAM_BOT_TOKEN");
-    const TELEGRAM_CHAT_ID = Deno.env.get("TELEGRAM_CHAT_ID");
+    const rawToken = Deno.env.get("TELEGRAM_BOT_TOKEN");
+    const rawChatId = Deno.env.get("TELEGRAM_CHAT_ID");
+
+    // Normalize secrets (common mistake: saving token with "bot" prefix)
+    const TELEGRAM_BOT_TOKEN = rawToken?.trim().replace(/^bot/i, "");
+    const TELEGRAM_CHAT_ID = rawChatId?.trim();
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-      console.error("Missing Telegram credentials");
+      console.error("Missing Telegram credentials", {
+        hasToken: Boolean(TELEGRAM_BOT_TOKEN),
+        hasChatId: Boolean(TELEGRAM_CHAT_ID),
+      });
       throw new Error("Telegram credentials not configured");
     }
+
+    console.log("Telegram credentials loaded", {
+      tokenPrefix: TELEGRAM_BOT_TOKEN.slice(0, 6) + "...",
+      chatId: TELEGRAM_CHAT_ID,
+    });
 
     const { name, email, phone, date, time, customAnswers }: TelegramMessageRequest = await req.json();
 
