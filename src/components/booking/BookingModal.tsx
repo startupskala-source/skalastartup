@@ -4,6 +4,7 @@ import { X, CheckCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingCalendar } from "./BookingCalendar";
 import { BookingForm } from "./BookingForm";
+import { TelegramTestButton } from "./TelegramTestButton";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -86,12 +87,15 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   </p>
                 </div>
               </div>
-              <button
-                onClick={handleClose}
-                className="p-1.5 sm:p-2 hover:bg-muted rounded-full transition-colors shrink-0"
-              >
-                <X className="h-4 w-4 sm:h-5 sm:w-5" />
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                <TelegramTestButton />
+                <button
+                  onClick={handleClose}
+                  className="p-1.5 sm:p-2 hover:bg-muted rounded-full transition-colors"
+                >
+                  <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                </button>
+              </div>
             </div>
 
             {/* Content */}
