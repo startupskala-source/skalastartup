@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Users, Folder, Clock, ThumbsUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const stats = [
-  { value: 200, suffix: "+", label: "Clientes atendidos" },
-  { value: 500, suffix: "+", label: "Projetos entregues" },
-  { value: 24, suffix: "/7", label: "Suporte disponível" },
-  { value: 98, suffix: "%", label: "Satisfação" },
+  { value: 200, suffix: "+", label: "Clientes atendidos", icon: Users },
+  { value: 500, suffix: "+", label: "Projetos entregues", icon: Folder },
+  { value: 24, suffix: "/7", label: "Suporte disponível", icon: Clock },
+  { value: 98, suffix: "%", label: "Satisfação", icon: ThumbsUp },
 ];
 
 export const Stats = () => {
@@ -44,6 +46,7 @@ const StatItem = ({
   isVisible: boolean;
 }) => {
   const [count, setCount] = useState(0);
+  const Icon = stat.icon;
 
   useEffect(() => {
     if (!isVisible) return;
@@ -68,10 +71,17 @@ const StatItem = ({
 
   return (
     <div
-      className="text-center"
+      className="text-center group"
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <p className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2">
+      <motion.div
+        className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 mb-3"
+        animate={isVisible && count === stat.value ? { scale: [1, 1.2, 1] } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+      </motion.div>
+      <p className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
         {count}
         <span className="text-muted-foreground">{stat.suffix}</span>
       </p>
