@@ -1,4 +1,4 @@
-import { Check, X, Star, Percent } from "lucide-react";
+import { Check, X, Percent } from "lucide-react";
 import { motion } from "framer-motion";
 
 const WHATSAPP_BASE_URL = "https://wa.me/5547984682257?text=";
@@ -130,43 +130,10 @@ export const PricingSection = () => {
                   : "bg-card border border-border"
               }`}
             >
-              {pkg.featured && (
-                <>
-                  <motion.div 
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold"
-                    animate={{ 
-                      scale: [1, 1.05, 1],
-                      boxShadow: [
-                        "0 0 0 0 rgba(var(--accent), 0)",
-                        "0 0 0 8px rgba(var(--accent), 0.3)",
-                        "0 0 0 0 rgba(var(--accent), 0)"
-                      ]
-                    }}
-                    transition={{ 
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <Star className="w-4 h-4 fill-current" />
-                    Mais Popular
-                  </motion.div>
-                  <motion.div 
-                    className="absolute -top-3 -right-3 flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3, type: "spring" }}
-                  >
-                    <Percent className="w-3 h-3" />
-                    {pkg.discount}
-                  </motion.div>
-                </>
-              )}
 
-              {/* Discount Badge for non-featured */}
-              {pkg.discount && !pkg.featured && (
-                <motion.div 
+              {/* Badge de desconto */}
+              {pkg.discount && (
+                <motion.div
                   className="absolute -top-3 -right-3 flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
@@ -177,6 +144,7 @@ export const PricingSection = () => {
                   {pkg.discount}
                 </motion.div>
               )}
+
 
               <div className="mb-6">
                 <h3 className="font-display text-xl md:text-2xl font-bold mb-2">
@@ -236,7 +204,7 @@ export const PricingSection = () => {
               </div>
 
               <a
-                href={`${WHATSAPP_BASE_URL}${encodeURIComponent(pkg.whatsappMessage)}&type=phone_number&app_absent=0`}
+                href={`${WHATSAPP_BASE_URL}${encodeURIComponent(pkg.whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-8 block w-full py-3 md:py-4 px-6 md:px-8 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
