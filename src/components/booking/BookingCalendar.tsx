@@ -115,30 +115,31 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
   const availableTimes = selectedDate ? getAvailableTimesForDate(selectedDate) : [];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Week Navigation */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <Button
           variant="ghost"
           size="icon"
           onClick={handlePreviousWeek}
           disabled={!isAfter(currentWeekStart, new Date())}
+          className="shrink-0"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </Button>
-        <div className="flex items-center gap-2 text-lg font-medium">
-          <CalendarIcon className="h-5 w-5 text-primary" />
-          <span>
+        <div className="flex items-center gap-2 text-sm sm:text-lg font-medium text-center">
+          <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+          <span className="capitalize">
             {format(currentWeekStart, "MMMM yyyy", { locale: ptBR })}
           </span>
         </div>
-        <Button variant="ghost" size="icon" onClick={handleNextWeek}>
-          <ChevronRight className="h-5 w-5" />
+        <Button variant="ghost" size="icon" onClick={handleNextWeek} className="shrink-0">
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </Button>
       </div>
 
       {/* Week Days */}
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1 sm:gap-2">
         {weekDays.map((day) => {
           const isAvailable = isDateAvailable(day);
           const isSelected = selectedDate && isSameDay(day, selectedDate);
@@ -150,7 +151,7 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
               onClick={() => isAvailable && onDateSelect(day)}
               disabled={!isAvailable}
               className={cn(
-                "flex flex-col items-center p-3 rounded-xl transition-all duration-200",
+                "flex flex-col items-center p-1.5 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-200 min-w-0",
                 isAvailable
                   ? "hover:bg-primary/10 cursor-pointer"
                   : "opacity-40 cursor-not-allowed",
@@ -158,10 +159,10 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
                 isToday && !isSelected && "ring-2 ring-primary/50"
               )}
             >
-              <span className="text-xs uppercase font-medium">
+              <span className="text-[10px] sm:text-xs uppercase font-medium truncate w-full text-center">
                 {format(day, "EEE", { locale: ptBR })}
               </span>
-              <span className="text-2xl font-bold mt-1">
+              <span className="text-base sm:text-2xl font-bold mt-0.5 sm:mt-1">
                 {format(day, "d")}
               </span>
             </button>
@@ -172,8 +173,8 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
       {/* Time Slots */}
       {selectedDate && (
         <div className="space-y-3">
-          <h4 className="font-medium text-muted-foreground">
-            Horários disponíveis para {format(selectedDate, "d 'de' MMMM", { locale: ptBR })}
+          <h4 className="font-medium text-muted-foreground text-sm sm:text-base">
+            Horários para {format(selectedDate, "d 'de' MMMM", { locale: ptBR })}
           </h4>
           
           {loading ? (
@@ -181,13 +182,13 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
               <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
             </div>
           ) : availableTimes.length > 0 ? (
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
               {availableTimes.map((time) => (
                 <button
                   key={time}
                   onClick={() => onTimeSelect(time)}
                   className={cn(
-                    "py-3 px-4 rounded-lg border text-sm font-medium transition-all duration-200",
+                    "py-2 sm:py-3 px-2 sm:px-4 rounded-lg border text-xs sm:text-sm font-medium transition-all duration-200",
                     selectedTime === time
                       ? "bg-primary text-primary-foreground border-primary"
                       : "border-border hover:border-primary hover:bg-primary/5"
@@ -198,7 +199,7 @@ export const BookingCalendar: React.FC<BookingCalendarProps> = ({
               ))}
             </div>
           ) : (
-            <p className="text-center text-muted-foreground py-4">
+            <p className="text-center text-muted-foreground py-4 text-sm">
               Nenhum horário disponível para esta data
             </p>
           )}
