@@ -24,9 +24,14 @@ const handler = async (req: Request): Promise<Response> => {
     const rawToken = Deno.env.get("TELEGRAM_BOT_TOKEN");
     const rawChatId = Deno.env.get("TELEGRAM_CHAT_ID");
 
-    // Normalize secrets (common mistake: saving token with "bot" prefix)
-    const TELEGRAM_BOT_TOKEN = rawToken?.trim().replace(/^bot/i, "");
-    const TELEGRAM_CHAT_ID = rawChatId?.trim();
+    // Normalize secrets (common mistakes: saving token with "bot" prefix or with quotes)
+    const TELEGRAM_BOT_TOKEN = rawToken
+      ?.trim()
+      .replace(/^bot/i, "")
+      .trim()
+      .replace(/^["']+|["']+$/g, "");
+
+    const TELEGRAM_CHAT_ID = rawChatId?.trim().replace(/^["']+|["']+$/g, "");
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
       console.error("Missing Telegram credentials", {
