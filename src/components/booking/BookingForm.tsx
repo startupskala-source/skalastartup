@@ -131,26 +131,26 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
       {/* Selected Date/Time Summary */}
-      <div className="bg-primary/5 rounded-xl p-4 space-y-2">
-        <div className="flex items-center gap-2 text-sm">
-          <Calendar className="h-4 w-4 text-primary" />
-          <span className="font-medium">
-            {format(selectedDate, "EEEE, d 'de' MMMM 'de' yyyy", { locale: ptBR })}
+      <div className="bg-primary/5 rounded-lg sm:rounded-xl p-3 sm:p-4 space-y-1.5 sm:space-y-2">
+        <div className="flex items-center gap-2 text-xs sm:text-sm">
+          <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary shrink-0" />
+          <span className="font-medium capitalize">
+            {format(selectedDate, "EEE, d 'de' MMM 'de' yyyy", { locale: ptBR })}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Clock className="h-4 w-4 text-primary" />
+        <div className="flex items-center gap-2 text-xs sm:text-sm">
+          <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary shrink-0" />
           <span className="font-medium">{selectedTime}</span>
         </div>
       </div>
 
       {/* Basic Fields */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="name" className="flex items-center gap-2">
-            <User className="h-4 w-4" />
+      <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-1.5 sm:space-y-2">
+          <Label htmlFor="name" className="flex items-center gap-2 text-xs sm:text-sm">
+            <User className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Nome completo *
           </Label>
           <Input
@@ -160,12 +160,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             onChange={handleInputChange}
             placeholder="Seu nome"
             required
+            className="text-sm sm:text-base h-9 sm:h-10"
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email" className="flex items-center gap-2">
-            <Mail className="h-4 w-4" />
+        <div className="space-y-1.5 sm:space-y-2">
+          <Label htmlFor="email" className="flex items-center gap-2 text-xs sm:text-sm">
+            <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Email *
           </Label>
           <Input
@@ -176,12 +177,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             onChange={handleInputChange}
             placeholder="seu@email.com"
             required
+            className="text-sm sm:text-base h-9 sm:h-10"
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="phone" className="flex items-center gap-2">
-            <Phone className="h-4 w-4" />
+        <div className="space-y-1.5 sm:space-y-2">
+          <Label htmlFor="phone" className="flex items-center gap-2 text-xs sm:text-sm">
+            <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Telefone
           </Label>
           <Input
@@ -191,19 +193,20 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             value={formData.phone}
             onChange={handleInputChange}
             placeholder="(11) 99999-9999"
+            className="text-sm sm:text-base h-9 sm:h-10"
           />
         </div>
       </div>
 
       {/* Custom Fields */}
       {customFields.length > 0 && (
-        <div className="space-y-4 pt-2">
-          <h4 className="font-medium text-muted-foreground text-sm">
+        <div className="space-y-3 sm:space-y-4 pt-2">
+          <h4 className="font-medium text-muted-foreground text-xs sm:text-sm">
             Informações adicionais
           </h4>
           {customFields.map((field) => (
-            <div key={field.id} className="space-y-2">
-              <Label htmlFor={field.id}>
+            <div key={field.id} className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor={field.id} className="text-xs sm:text-sm">
                 {field.field_label} {field.is_required && "*"}
               </Label>
               <Input
@@ -212,6 +215,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 value={customAnswers[field.field_label] || ""}
                 onChange={(e) => handleCustomFieldChange(field.field_label, e.target.value)}
                 required={field.is_required}
+                className="text-sm sm:text-base h-9 sm:h-10"
               />
             </div>
           ))}
@@ -219,24 +223,24 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       )}
 
       {/* Actions */}
-      <div className="flex gap-3 pt-4">
+      <div className="flex gap-2 sm:gap-3 pt-2 sm:pt-4">
         <Button
           type="button"
           variant="outline"
           onClick={onBack}
-          className="flex-1"
+          className="flex-1 text-sm h-9 sm:h-10"
           disabled={loading}
         >
           Voltar
         </Button>
-        <Button type="submit" className="flex-1" disabled={loading}>
+        <Button type="submit" className="flex-1 text-sm h-9 sm:h-10" disabled={loading}>
           {loading ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
               Agendando...
             </>
           ) : (
-            "Confirmar Agendamento"
+            "Confirmar"
           )}
         </Button>
       </div>

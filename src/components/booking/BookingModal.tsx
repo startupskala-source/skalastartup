@@ -69,33 +69,33 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-50 bg-card rounded-2xl shadow-2xl sm:max-w-lg sm:w-full max-h-[90vh] overflow-hidden flex flex-col"
+            className="fixed inset-2 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-50 bg-card rounded-xl sm:rounded-2xl shadow-2xl sm:max-w-lg sm:w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-primary/10">
-                  <Calendar className="h-5 w-5 text-primary" />
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div className="p-1.5 sm:p-2 rounded-full bg-primary/10 shrink-0">
+                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
-                <div>
-                  <h2 className="text-lg font-semibold">Agendar Reunião</h2>
-                  <p className="text-sm text-muted-foreground">
-                    {step === "calendar" && "Escolha uma data e horário"}
+                <div className="min-w-0">
+                  <h2 className="text-base sm:text-lg font-semibold truncate">Agendar Reunião</h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">
+                    {step === "calendar" && "Escolha data e horário"}
                     {step === "form" && "Preencha seus dados"}
-                    {step === "success" && "Agendamento confirmado!"}
+                    {step === "success" && "Confirmado!"}
                   </p>
                 </div>
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 hover:bg-muted rounded-full transition-colors"
+                className="p-1.5 sm:p-2 hover:bg-muted rounded-full transition-colors shrink-0"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4">
               <AnimatePresence mode="wait">
                 {step === "calendar" && (
                   <motion.div
