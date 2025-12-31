@@ -71,15 +71,16 @@ const Index = () => {
 
           {/* CTA Buttons */}
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-700 delay-[1600ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-            <ShimmerButton shimmerColor="#000000" background="rgba(255, 255, 255, 1)" className="text-black font-medium text-sm sm:text-base w-full sm:w-auto" onClick={() => document.getElementById('contato')?.scrollIntoView({
-            behavior: 'smooth'
-          })}>
-              Começar agora
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </ShimmerButton>
-            <Button variant="minimal" size="xl" className="w-full sm:w-auto" asChild>
-              
-            </Button>
+            <a 
+              href="https://api.whatsapp.com/send/?phone=%2B5547984682257&text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20a%20automatizar%20meu%20neg%C3%B3cio.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ShimmerButton shimmerColor="#000000" background="rgba(255, 255, 255, 1)" className="text-black font-medium text-sm sm:text-base w-full sm:w-auto px-8 md:px-12 py-3 md:py-4">
+                Começar agora
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </ShimmerButton>
+            </a>
           </div>
 
           {/* Bottom decorative line */}
@@ -154,12 +155,24 @@ const Index = () => {
       <RatingSection />
 
       <Footer />
-      <FloatingConsultButton buttonSize={100} imageSize={60} imageSrc={consultantAvatar} imageAlt="Consultor SKALA" revolvingText="FALE CONOSCO - CONSULTORIA - " popupHeading="Consultoria Gratuita" popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar." popupBadgeText="Grátis" ctaButtonText="Agendar conversa" ctaButtonAction={() => document.getElementById('contato')?.scrollIntoView({
-      behavior: 'smooth'
-    })} position={{
-      bottom: "1.5rem",
-      right: "1.5rem"
-    }} />
+      <FloatingConsultButton 
+        buttonSize={100} 
+        imageSize={60} 
+        imageSrc={consultantAvatar} 
+        imageAlt="Consultor SKALA" 
+        revolvingText="FALE CONOSCO - CONSULTORIA - " 
+        popupHeading="Consultoria Gratuita" 
+        popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar." 
+        popupBadgeText="Grátis" 
+        ctaButtonText="Agendar conversa" 
+        ctaButtonAction={() => {
+          window.open("https://api.whatsapp.com/send/?phone=%2B5547984682257&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consultoria%20gratuita.&type=phone_number&app_absent=0", "_blank");
+        }} 
+        position={{
+          bottom: "1.5rem",
+          right: "1.5rem"
+        }} 
+      />
     </main>;
 };
 export default Index;
