@@ -76,7 +76,8 @@ const Index = () => {
               background="rgba(255, 255, 255, 1)" 
               className="text-black font-medium text-sm sm:text-base w-full sm:w-auto px-8 md:px-12 py-3 md:py-4"
               onClick={() => {
-                window.open("https://wa.me/5547984682257?text=Olá! Quero começar a automatizar meu negócio.", "_blank");
+                const msg = encodeURIComponent("Olá! Quero começar a automatizar meu negócio.");
+                window.open(`https://wa.me/5547984682257?text=${msg}`, "_blank");
               }}
             >
               Começar agora
@@ -167,7 +168,8 @@ const Index = () => {
         popupBadgeText="Grátis" 
         ctaButtonText="Agendar conversa" 
         ctaButtonAction={() => {
-          window.open("https://wa.me/5547984682257?text=Olá! Gostaria de agendar uma consultoria gratuita.", "_blank");
+          const msg = encodeURIComponent("Olá! Gostaria de agendar uma consultoria gratuita.");
+          window.open(`https://wa.me/5547984682257?text=${msg}`, "_blank");
         }} 
         position={{
           bottom: "1.5rem",
