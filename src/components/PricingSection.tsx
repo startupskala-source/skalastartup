@@ -1,20 +1,28 @@
-import { Check, X, Star } from "lucide-react";
+import { Check, X, Star, Percent } from "lucide-react";
 import { motion } from "framer-motion";
+
+const WHATSAPP_BASE_URL = "https://api.whatsapp.com/send/?phone=%2B5547984682257&text=";
 
 interface Package {
   name: string;
   price: string;
+  originalPrice?: string;
+  discount?: string;
   featured?: boolean;
   target: string;
   includes: string[];
   excludes: string[];
+  whatsappMessage: string;
 }
 
 const packages: Package[] = [
   {
     name: "START",
     price: "R$ 850",
+    originalPrice: "R$ 1.200",
+    discount: "29% OFF",
     target: "Negócios que precisam começar do jeito certo, com presença profissional e anúncios organizados.",
+    whatsappMessage: "Olá! Quero saber mais sobre o Pacote START.",
     includes: [
       "Tráfego pago (Meta ou Google)",
       "Criação de 2 criativos simples por mês",
@@ -36,8 +44,11 @@ const packages: Package[] = [
   {
     name: "PERFORMANCE",
     price: "R$ 1.497",
+    originalPrice: "R$ 2.200",
+    discount: "32% OFF",
     featured: true,
     target: "Negócios que já querem crescer com imagem forte e marketing organizado.",
+    whatsappMessage: "Olá! Quero saber mais sobre o Pacote PERFORMANCE.",
     includes: [
       "Tráfego pago (Meta e/ou Google)",
       "Criação de 4 criativos por mês",
@@ -60,7 +71,10 @@ const packages: Package[] = [
   {
     name: "GROWTH",
     price: "R$ 3.000",
+    originalPrice: "R$ 4.500",
+    discount: "33% OFF",
     target: "Empresas que querem escala, autoridade e previsibilidade.",
+    whatsappMessage: "Olá! Quero saber mais sobre o Pacote GROWTH.",
     includes: [
       "Tráfego pago multicanal",
       "Criação de 6 criativos por mês",
@@ -117,24 +131,50 @@ export const PricingSection = () => {
               }`}
             >
               {pkg.featured && (
+                <>
+                  <motion.div 
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                      boxShadow: [
+                        "0 0 0 0 rgba(var(--accent), 0)",
+                        "0 0 0 8px rgba(var(--accent), 0.3)",
+                        "0 0 0 0 rgba(var(--accent), 0)"
+                      ]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Star className="w-4 h-4 fill-current" />
+                    Mais Popular
+                  </motion.div>
+                  <motion.div 
+                    className="absolute -top-3 -right-3 flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, type: "spring" }}
+                  >
+                    <Percent className="w-3 h-3" />
+                    {pkg.discount}
+                  </motion.div>
+                </>
+              )}
+
+              {/* Discount Badge for non-featured */}
+              {pkg.discount && !pkg.featured && (
                 <motion.div 
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold"
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    boxShadow: [
-                      "0 0 0 0 rgba(var(--accent), 0)",
-                      "0 0 0 8px rgba(var(--accent), 0.3)",
-                      "0 0 0 0 rgba(var(--accent), 0)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                  className="absolute -top-3 -right-3 flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, type: "spring" }}
                 >
-                  <Star className="w-4 h-4 fill-current" />
-                  Mais Popular
+                  <Percent className="w-3 h-3" />
+                  {pkg.discount}
                 </motion.div>
               )}
 
@@ -142,11 +182,18 @@ export const PricingSection = () => {
                 <h3 className="font-display text-xl md:text-2xl font-bold mb-2">
                   PACOTE {pkg.name}
                 </h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl md:text-4xl font-bold">{pkg.price}</span>
-                  <span className={`text-sm ${pkg.featured ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                    / mês
-                  </span>
+                <div className="flex flex-col gap-1">
+                  {pkg.originalPrice && (
+                    <span className={`text-sm line-through ${pkg.featured ? "text-primary-foreground/50" : "text-muted-foreground/60"}`}>
+                      {pkg.originalPrice}
+                    </span>
+                  )}
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl md:text-4xl font-bold">{pkg.price}</span>
+                    <span className={`text-sm ${pkg.featured ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                      / mês
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -189,10 +236,12 @@ export const PricingSection = () => {
               </div>
 
               <a
-                href="#contato"
-                className={`mt-8 block w-full py-3 px-6 rounded-lg font-semibold text-center transition-all duration-300 ${
+                href={`${WHATSAPP_BASE_URL}${encodeURIComponent(pkg.whatsappMessage)}&type=phone_number&app_absent=0`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-8 block w-full py-3 md:py-4 px-6 md:px-8 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
                   pkg.featured
-                    ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                    ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg"
                     : "bg-primary text-primary-foreground hover:bg-primary/90"
                 }`}
               >
