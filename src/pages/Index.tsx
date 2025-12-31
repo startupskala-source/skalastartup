@@ -15,25 +15,13 @@ import Testimonials from "@/components/Testimonials";
 import ModulesChart from "@/components/ModulesChart";
 import BusinessCycle from "@/components/BusinessCycle";
 import { PricingSection } from "@/components/PricingSection";
-import { ClientLogos } from "@/components/ClientLogos";
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { BlogPreview } from "@/components/BlogPreview";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { useTypewriter } from "@/hooks/useTypewriter";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import consultantAvatar from "@/assets/consultant-avatar.jpg";
 
 const Index = () => {
   const [lineVisible, setLineVisible] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
   
-  const { text: typewriterText } = useTypewriter({
-    words: ["cardápios digitais", "atendimento 24/7", "vendas online", "marketing inteligente"],
-    typeSpeed: 80,
-    deleteSpeed: 40,
-    delayBetweenWords: 2500,
-  });
-
   useEffect(() => {
     const lineTimer = setTimeout(() => setLineVisible(true), 1200);
     const ctaTimer = setTimeout(() => setCtaVisible(true), 1600);
@@ -61,10 +49,6 @@ const Index = () => {
     },
   ];
 
-  const scrollToPortfolio = () => {
-    document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <main className="min-h-screen bg-background">
       <Header />
@@ -85,11 +69,8 @@ const Index = () => {
           </h1>
 
           <div className={`transition-all duration-700 delay-[1400ms] ${ctaVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-2 leading-relaxed px-2">
-              Transformamos a presença digital do seu negócio com
-            </p>
-            <p className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground mb-8 sm:mb-12 h-8">
-              {typewriterText}<span className="animate-pulse">|</span>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2">
+              Transformamos a presença digital do seu negócio com automações inteligentes para cardápios, atendimento e vendas online.
             </p>
           </div>
 
@@ -103,25 +84,14 @@ const Index = () => {
                 window.open(`https://wa.me/5547984682257?text=${msg}`, "_blank");
               }}
             >
-              <WhatsAppIcon className="h-5 w-5 mr-2" animate={false} />
               Começar agora
               <ArrowRight className="ml-2 h-4 w-4" />
             </ShimmerButton>
-            <button 
-              onClick={scrollToPortfolio}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base py-3"
-            >
-              Ver portfólio
-              <ChevronDown className="h-4 w-4" />
-            </button>
           </div>
 
           <div className={`mx-auto w-px h-20 sm:h-32 bg-gradient-to-b from-border to-transparent mt-16 sm:mt-24 transition-all duration-1000 origin-top delay-[1800ms] ${ctaVisible ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`} />
         </div>
       </section>
-
-      {/* Client Logos */}
-      <ClientLogos />
 
       {/* Services Section */}
       <section id="servicos" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12">
@@ -152,7 +122,6 @@ const Index = () => {
       <PricingSection />
       <FAQ />
       <Testimonials />
-      <BlogPreview />
 
       {/* Contact Section */}
       <section id="contato" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-secondary">
@@ -175,7 +144,6 @@ const Index = () => {
 
       <RatingSection />
       <Footer />
-      <ScrollToTop />
       <FloatingConsultButton 
         buttonSize={100} 
         imageSize={60} 
@@ -183,7 +151,7 @@ const Index = () => {
         imageAlt="Consultor SKALA" 
         revolvingText="FALE CONOSCO - CONSULTORIA - " 
         popupHeading="Consultoria Gratuita" 
-        popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto." 
+        popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar." 
         popupBadgeText="Grátis" 
         ctaButtonText="Agendar conversa" 
         ctaButtonAction={() => {
