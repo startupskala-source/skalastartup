@@ -4,6 +4,14 @@ import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+interface TelegramErrorResponse {
+  success: false;
+  stage: "getMe" | "sendMessage";
+  error: string;
+  telegram_error_code?: number;
+  telegram_description?: string;
+}
+
 export const TelegramTestButton: React.FC = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -26,10 +34,21 @@ export const TelegramTestButton: React.FC = () => {
 
       if (data?.success) {
         setStatus("success");
-        toast.success("Telegram conectado com sucesso!");
+        toast.success("Telegram conectado com sucesso! Verifique seu chat.");
         setTimeout(() => setStatus("idle"), 3000);
       } else {
-        throw new Error(data?.error || "Erro desconhecido");
+        // Handle structured error response
+        const errorData = data as TelegramErrorResponse;
+        const stageLabel = errorData.stage === "getMe" ? "Token" : "Envio";
+        
+        setStatus("error");
+        toast.error(`${stageLabel}: ${errorData.error}`, {
+          duration: 8000,
+          description: errorData.telegram_description 
+            ? `Código: ${errorData.telegram_error_code}` 
+            : undefined,
+        });
+        setTimeout(() => setStatus("idle"), 5000);
       }
     } catch (error: any) {
       setStatus("error");
