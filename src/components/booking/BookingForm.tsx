@@ -90,8 +90,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         throw new Error("Erro ao salvar agendamento");
       }
 
-      // Send Telegram notification
-      const { error: telegramError } = await supabase.functions.invoke("send-telegram", {
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke("send-email-notification", {
         body: {
           name: formData.name,
           email: formData.email,
@@ -102,18 +102,18 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         },
       });
 
-      if (telegramError) {
-        console.error("Error sending Telegram notification:", telegramError);
+      if (emailError) {
+        console.error("Error sending email notification:", emailError);
         // Don't throw - appointment was saved successfully
         toast({
           title: "Agendamento confirmado!",
-          description: "Porém houve um erro ao enviar a notificação. Entraremos em contato.",
+          description: "Porém houve um erro ao enviar a notificação por email. Entraremos em contato.",
           variant: "default",
         });
       } else {
         toast({
           title: "Agendamento confirmado!",
-          description: `Sua reunião foi agendada para ${format(selectedDate, "dd 'de' MMMM", { locale: ptBR })} às ${selectedTime}.`,
+          description: `Sua reunião foi agendada para ${format(selectedDate, "dd 'de' MMMM", { locale: ptBR })} às ${selectedTime}. Você receberá um email de confirmação.`,
         });
       }
 
