@@ -1,5 +1,6 @@
 import { Check, X, Percent } from "lucide-react";
 import { motion } from "framer-motion";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const WHATSAPP_BASE_URL = "https://wa.me/5547984682257?text=";
 
@@ -130,7 +131,6 @@ export const PricingSection = () => {
                   : "bg-card border border-border"
               }`}
             >
-
               {/* Badge de desconto */}
               {pkg.discount && (
                 <motion.div
@@ -144,7 +144,6 @@ export const PricingSection = () => {
                   {pkg.discount}
                 </motion.div>
               )}
-
 
               <div className="mb-6">
                 <h3 className="font-display text-xl md:text-2xl font-bold mb-2">
@@ -207,12 +206,13 @@ export const PricingSection = () => {
                 href={`${WHATSAPP_BASE_URL}${encodeURIComponent(pkg.whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-8 block w-full py-3 md:py-4 px-6 md:px-8 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+                className={`mt-8 flex items-center justify-center gap-2 w-full py-3 md:py-4 px-6 md:px-8 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
                   pkg.featured
                     ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg"
                     : "bg-primary text-primary-foreground hover:bg-primary/90"
                 }`}
               >
+                <WhatsAppIcon className="h-5 w-5" animate={false} />
                 Quero esse pacote
               </a>
             </motion.div>
