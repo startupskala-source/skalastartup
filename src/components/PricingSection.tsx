@@ -1,7 +1,7 @@
 import { Check, X, Star, Percent } from "lucide-react";
 import { motion } from "framer-motion";
 
-const WHATSAPP_BASE_URL = "https://api.whatsapp.com/send/?phone=%2B5547984682257&text=";
+const WHATSAPP_BASE_URL = "https://wa.me/5547984682257?text=";
 
 interface Package {
   name: string;
