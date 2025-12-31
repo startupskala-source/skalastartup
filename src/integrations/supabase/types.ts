@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          appointment_date: string
+          appointment_time: string
+          created_at: string
+          custom_answers: Json | null
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          appointment_date: string
+          appointment_time: string
+          created_at?: string
+          custom_answers?: Json | null
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          appointment_date?: string
+          appointment_time?: string
+          created_at?: string
+          custom_answers?: Json | null
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      available_time_slots: {
+        Row: {
+          created_at: string
+          day_of_week: number
+          end_time: string
+          id: string
+          is_active: boolean
+          start_time: string
+        }
+        Insert: {
+          created_at?: string
+          day_of_week: number
+          end_time: string
+          id?: string
+          is_active?: boolean
+          start_time: string
+        }
+        Update: {
+          created_at?: string
+          day_of_week?: number
+          end_time?: string
+          id?: string
+          is_active?: boolean
+          start_time?: string
+        }
+        Relationships: []
+      }
+      booking_form_fields: {
+        Row: {
+          created_at: string
+          field_label: string
+          field_order: number
+          field_type: string
+          id: string
+          is_required: boolean
+        }
+        Insert: {
+          created_at?: string
+          field_label: string
+          field_order?: number
+          field_type?: string
+          id?: string
+          is_required?: boolean
+        }
+        Update: {
+          created_at?: string
+          field_label?: string
+          field_order?: number
+          field_type?: string
+          id?: string
+          is_required?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
