@@ -12,6 +12,7 @@ interface TelegramMessageRequest {
   date: string;
   time: string;
   customAnswers?: Record<string, string>;
+  testMode?: boolean;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -46,9 +47,9 @@ const handler = async (req: Request): Promise<Response> => {
       chatId: TELEGRAM_CHAT_ID,
     });
 
-    const { name, email, phone, date, time, customAnswers }: TelegramMessageRequest = await req.json();
+    const { name, email, phone, date, time, customAnswers, testMode }: TelegramMessageRequest = await req.json();
 
-    console.log("Received booking request:", { name, email, phone, date, time });
+    console.log("Received booking request:", { name, email, phone, date, time, testMode });
 
     // Format custom answers for the message
     let customAnswersText = "";
@@ -60,7 +61,20 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Create the Telegram message
-    const message = `
+    let message: string;
+    if (testMode) {
+      message = `
+🧪 *Teste de Conexão Telegram*
+
+✅ A integração está funcionando corretamente!
+📅 Data do teste: ${date}
+⏰ Horário: ${time}
+
+---
+_Mensagem de teste via Skala_
+      `.trim();
+    } else {
+      message = `
 🗓️ *Nova Reserva de Reunião!*
 
 👤 *Nome:* ${name}
@@ -71,7 +85,8 @@ const handler = async (req: Request): Promise<Response> => {
 
 ---
 _Agendamento realizado via Skala_
-    `.trim();
+      `.trim();
+    }
 
     // Send message to Telegram
     const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
