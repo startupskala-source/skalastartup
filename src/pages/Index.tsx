@@ -8,15 +8,14 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Stats } from "@/components/Stats";
 import { FAQ } from "@/components/FAQ";
 import { MultiStepForm } from "@/components/ui/multistep-form";
-import { FloatingConsultButton } from "@/components/ui/floating-consult-button";
 import { Portfolio } from "@/components/Portfolio";
 import { RatingSection } from "@/components/RatingSection";
 import Testimonials from "@/components/Testimonials";
 import ModulesChart from "@/components/ModulesChart";
 import BusinessCycle from "@/components/BusinessCycle";
 import { PricingSection } from "@/components/PricingSection";
+import { FloatingBookingButton } from "@/components/booking/FloatingBookingButton";
 import { ArrowRight } from "lucide-react";
-import consultantAvatar from "@/assets/consultant-avatar.jpg";
 
 const Index = () => {
   const [lineVisible, setLineVisible] = useState(false);
@@ -144,20 +143,10 @@ const Index = () => {
 
       <RatingSection />
       <Footer />
-      <FloatingConsultButton 
+      <FloatingBookingButton 
         buttonSize={100} 
-        imageSize={60} 
-        imageSrc={consultantAvatar} 
-        imageAlt="Consultor SKALA" 
-        revolvingText="FALE CONOSCO - CONSULTORIA - " 
-        popupHeading="Consultoria Gratuita" 
-        popupDescription="Uma conversa rápida e gratuita com nossa equipe para discutir seu projeto e entender como podemos ajudar." 
-        popupBadgeText="Grátis" 
-        ctaButtonText="Agendar conversa" 
-        ctaButtonAction={() => {
-          const msg = encodeURIComponent("Olá! Gostaria de agendar uma consultoria gratuita.");
-          window.open(`https://wa.me/5547984682257?text=${msg}`, "_blank");
-        }} 
+        imageSize={60}
+        revolvingText="AGENDAR REUNIÃO • GRÁTIS • "
         position={{ bottom: "1.5rem", right: "1.5rem" }} 
       />
     </main>
