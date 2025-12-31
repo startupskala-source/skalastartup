@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -84,7 +84,6 @@ const ProjectCard = ({
   index: number;
 }) => {
   const { ref, isVisible } = useScrollAnimation<HTMLAnchorElement>(0.1);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <Link
@@ -96,18 +95,10 @@ const ProjectCard = ({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <div className="relative overflow-hidden rounded-lg bg-secondary aspect-[3/2]">
-        {/* Skeleton placeholder */}
-        {!isLoaded && (
-          <div className="absolute inset-0 bg-muted animate-pulse" />
-        )}
         <img
           src={project.image}
           alt={project.title}
-          loading="lazy"
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import skalaLogo from "@/assets/skala-logo.svg";
-import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
-import { WhatsAppIcon } from "./WhatsAppIcon";
+import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 const quickLinks = [
   { href: "#servicos", label: "Serviços" },
@@ -16,7 +15,7 @@ const socialLinks = [
   { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
   { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
   { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://wa.me/5547984682257", icon: WhatsAppIcon, label: "WhatsApp", isCustom: true },
+  { href: "https://wa.me/5547984682257", icon: MessageCircle, label: "WhatsApp" },
 ];
 
 export const Footer = () => {
@@ -40,11 +39,7 @@ export const Footer = () => {
                   className="p-2.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label={social.label}
                 >
-                  {social.isCustom ? (
-                    <WhatsAppIcon className="h-4 w-4" animate={false} />
-                  ) : (
-                    <social.icon className="h-4 w-4" />
-                  )}
+                  <social.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
