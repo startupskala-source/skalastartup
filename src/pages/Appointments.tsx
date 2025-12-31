@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TelegramTestButton } from "@/components/booking/TelegramTestButton";
 
 interface Appointment {
   id: string;
@@ -82,18 +83,21 @@ const Appointments: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-          </Link>
-          <div>
-            <h1 className="text-2xl font-bold">Agendamentos</h1>
-            <p className="text-sm text-muted-foreground">
-              Visualize todos os agendamentos
-            </p>
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Link to="/">
+              <Button variant="ghost" size="icon">
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+            </Link>
+            <div>
+              <h1 className="text-2xl font-bold">Agendamentos</h1>
+              <p className="text-sm text-muted-foreground">
+                Visualize todos os agendamentos
+              </p>
+            </div>
           </div>
+          <TelegramTestButton />
         </div>
       </header>
 
